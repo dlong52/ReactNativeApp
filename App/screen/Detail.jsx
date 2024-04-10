@@ -17,24 +17,24 @@ const Detail = () => {
       onValue(q, (snapshot) => {
         const dataFromDb = snapshot.val();
         if (dataFromDb) {
-          setData({ id: params.detail, ...dataFromDb });
-        } 
+          // Convert object to array
+          const dataArray = Object.keys(dataFromDb).map((key) => ({ id: key, ...dataFromDb[key] }));
+          setData(dataArray[0]); // Assuming you only expect one result
+        }
       }, (error) => {
         console.error('Error fetching data:', error);
       });
     };
-    
-    fetchData();
-  }, [params.detail]);
 
-  return (   
+    fetchData();
+
+  }, [params.detail]);
+console.log(data.name);
+  return (
     <View>
-      {data.images && data.images[0] && (
-        <Image style={{ height: 250 }} source={{ uri: data.images[0] }} />
-      )}
-      {data.name && (
-        <Text>{data.name}</Text>
-      )}
+      {/* <Image source={{uri: data.images[0]}} className="h-[250px]"/> */}
+      <Text>{data.price}</Text>
+      {/* Display other data fields as needed */}
     </View>
   );
 };
