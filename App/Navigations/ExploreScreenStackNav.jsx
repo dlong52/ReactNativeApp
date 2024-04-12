@@ -23,9 +23,12 @@ const ExploreScreenStackNav = () => {
         name="detail"
         component={Detail}
         options={
-          ({ route }) => ({ title: route.params.detail, headerBackTitleStyle: { textTransform: 'capitalize' } })}
+          ({ route }) => ({ 
+            title: "Detail", 
+            headerBackTitleStyle: { textTransform: 'capitalize' }, 
+            })}
       />
-    </Stack.Navigator>
+    </Stack.Navigator> 
   )
 }
 

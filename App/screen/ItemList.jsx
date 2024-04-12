@@ -1,9 +1,9 @@
-import { View, Text, ScrollView } from 'react-native'
+import {ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
 import { getDatabase, ref, query, orderByChild, equalTo, onValue } from 'firebase/database';
 import { app } from '../../firebaseConfig';
-import LastestProduct from '../components/LastestProduct';
+import Product from '../components/Product';
 const ItemList = () => {
   const [data, setData] = useState([])
   const { params } = useRoute()
@@ -32,7 +32,7 @@ const ItemList = () => {
 
   return (
     <ScrollView className="bg-white p-6">
-      <LastestProduct lastTestPd={data}/> 
+      <Product data={data}/> 
     </ScrollView>
   )
 }

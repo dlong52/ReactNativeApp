@@ -1,15 +1,36 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
-import { useUser, ClerkProvider, SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
+import { useUser, useAuth } from "@clerk/clerk-expo";
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+
 export default function ProfileScreen() {
   const { user } = useUser();
 
   const { isLoaded, signOut } = useAuth();
+  const handleLogout = () => {
+    Alert.alert(
+      "Xác nhận Log Out",
+      "Bạn có chắc chắn muốn đăng xuất không?",
+      [
+        {
+          text: "Hủy",
+          style: "cancel" // Nút hủy sẽ ở bên trái
+        },
+        {
+          text: "Xác nhận",
+          onPress: () => {
+            signOut(); // Thực hiện log out khi người dùng xác nhận
+          }
+        }
+      ],
+      { cancelable: true }
+    );
+  };
   if (!isLoaded) {
     return null;
   }
@@ -42,9 +63,7 @@ export default function ProfileScreen() {
           <Text className="font-bold text-gray-700 text-[15px]">Help Center</Text>
           <AntDesign name="right" size={24} color="gray" />
         </View>
-        <TouchableOpacity onPress={() => {
-          signOut();
-        }} className="flex flex-row justify-between h-[55px] items-center border-b border-gray-400">
+        <TouchableOpacity onPress={handleLogout} className="flex flex-row justify-between h-[55px] items-center border-b border-gray-400">
           <MaterialIcons name="logout" size={24} color="gray" />
           <Text className="font-bold text-gray-700 text-[15px]">Log Out</Text>
           <AntDesign name="right" size={24} color="gray" />

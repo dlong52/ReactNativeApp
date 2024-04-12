@@ -13,6 +13,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import HomeScreenStackNav from './HomeScreenStackNav';
 import ExploreScreenStackNav from './ExploreScreenStackNav';
+import AuthScreenStack from './AuthScreenStack';
 
 export default function TabNavigation() {
     const Tab = createBottomTabNavigator();

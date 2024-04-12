@@ -5,13 +5,14 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import { app } from '../../firebaseConfig';
 import Header from '../components/Header';
 import Category from '../components/Category';
+import LoadingScreen from './LoadingScreen';
 
 export default function HomeScreen() {
 
     const [category, setCategory] = useState([])
     const dbRef = ref(getDatabase());
     useEffect(() => {  
-        getCategoryList()
+        getCategoryList()   
     }, [])
     
     const getCategoryList = async () => {
@@ -25,8 +26,10 @@ export default function HomeScreen() {
             console.error(error);
         });
     }
-    
-    // stickyHeaderIndices={[0]} 
+    if (!category || !Object.keys(category).length) {
+        return <LoadingScreen/>;
+    }
+    // stickyHeaderIndices={[0]}  
     return (
         <ScrollView className="bg-white py-8 px-[25]">
             <Header />

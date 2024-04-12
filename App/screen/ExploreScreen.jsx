@@ -1,27 +1,29 @@
-import { View, Text, TouchableOpacity, TextInput, ScrollView, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Ionicons } from '@expo/vector-icons';
-import LastestProduct from '../components/LastestProduct';
 
 import { getDatabase, ref, child, get } from "firebase/database";
 
-import { useNavigation } from '@react-navigation/native'
+import { Ionicons } from '@expo/vector-icons';
+
+import { useNavigation } from '@react-navigation/native';
+
+import Product from '../components/Product';
+
 export default function ExploreScreen() {
   const navigation = useNavigation()
-  const [lastTestPd, setLastTestPd] = useState([])
+  const [products, setProducts] = useState([])
   const dbRef = ref(getDatabase());
   useEffect(() => {
     getProductList()
   }, [])
 
   const getProductList = () => {
-    setLastTestPd([])
+    setProducts([])
     get(child(dbRef, `Products`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        setLastTestPd(snapshot.val())
-      } else {
+      if (snapshot.exists()) 
+        setProducts(snapshot.val())
+      else 
         console.log("No data available");
-      }
     }).catch((error) => {
       console.error(error);
     });
@@ -44,7 +46,7 @@ export default function ExploreScreen() {
           </View>
         </TouchableOpacity>
       </View>
-
+   
       <View className=" flex-row gap-2 justify-between my-6">
         <View className="flex-1 gap-x-3 rounded-md bg-slate-200 flex-row items-center justify-between">
           <Ionicons name="search" size={24} color="gray" />
@@ -53,8 +55,8 @@ export default function ExploreScreen() {
         <TouchableOpacity className="w-[45px] h-[45px] bg-black items-center justify-center rounded-md">
           <Ionicons name="filter" size={24} color="white" />
         </TouchableOpacity>
-      </View>
-      <LastestProduct lastTestPd={lastTestPd} />
-    </ScrollView>
+      </View> 
+      <Product data={products} />
+    </ScrollView>            
   )
 }

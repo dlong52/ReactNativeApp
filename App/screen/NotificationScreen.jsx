@@ -5,7 +5,7 @@ export default function NotificationScreen() {
   const [notify, setnotify] = useState([])
   return (
     <View className="flex items-center justify-center h-full p-6">
-      {notify>0 ? 
+      {notify.length>0 ? 
         <Text>Notification Screen</Text>: 
         <View className="flex items-center justify-center">
           <Text className="text-[20px] font-semibold my-4">No Messages Yet</Text>

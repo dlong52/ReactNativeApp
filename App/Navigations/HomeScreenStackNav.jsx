@@ -1,9 +1,10 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-import HomeScreen from '../screen/HomeScreen';
-import ItemList from '../screen/ItemList';
 import { createStackNavigator } from '@react-navigation/stack';
+
 import CartScreen from '../screen/CartScreen';
+import ItemList from '../screen/ItemList';
+import HomeScreen from '../screen/HomeScreen';
+import Detail from '../screen/Detail';
 
 const Stack = createStackNavigator();
 const HomeScreenStackNav = () => {
@@ -25,6 +26,15 @@ const HomeScreenStackNav = () => {
         component={CartScreen}
         options={
           ({ route }) => ({ title: route.params.cart, headerBackTitleStyle: { textTransform: 'capitalize' } })}
+      />
+      <Stack.Screen
+        name="detail"
+        component={Detail}
+        options={
+          ({ route }) => ({
+            title: "Detail",
+            headerBackTitleStyle: { textTransform: 'capitalize' },
+          })}
       />
     </Stack.Navigator>
   )

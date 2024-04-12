@@ -1,11 +1,11 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useUser } from '@clerk/clerk-expo'
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
 const Header = () => {
     const navigation = useNavigation()
-    
+
     const { user } = useUser()
     return (
         <View className="flex-row justify-between items-center">
