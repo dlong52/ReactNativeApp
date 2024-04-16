@@ -30,7 +30,7 @@ export default function HomeScreen() {
         return <LoadingScreen/>;
     }
     // stickyHeaderIndices={[0]}  
-    return (
+    return (    
         <ScrollView className="bg-white py-8 px-[25]">
             <Header />
             <Category category={category}/>

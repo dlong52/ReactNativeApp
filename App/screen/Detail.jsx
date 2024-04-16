@@ -1,16 +1,21 @@
 import { View, Text, Image, Button, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
-import { getDatabase, ref, query, orderByChild, equalTo, onValue } from 'firebase/database';
-import { app } from '../../firebaseConfig';
+import { getDatabase, ref, query, orderByChild, equalTo, onValue, child, push } from 'firebase/database';
+import { app, auth } from '../../firebaseConfig';
 import helper from '../../helper';
 import LoadingScreen from './LoadingScreen';
 
 const Detail = () => {
   const [data, setData] = useState({});
+  const [selectedSize, setSelectedSize] = useState(null);
   const { params } = useRoute();
 
+  const styleSizeButton = "mr-4 border border-black w-[40px] h-[30px] items-center justify-center rounded-full";
+  const styleAddToCartButton = "bg-black rounded-2xl justify-center items-center h-[45px] my-7";
+
   useEffect(() => {
+    const currentUser = auth.currentUser
     const fetchData = () => {
       const db = getDatabase(app);
       const dbRef = ref(db, 'Products');
@@ -31,11 +36,43 @@ const Detail = () => {
     fetchData();
 
   }, [params.detail]);
+  const handleSizeSelection = (size) => {
+    setSelectedSize(size);
+  };
+console.log(data);
+  const addToCart = () => {
+    // Kiểm tra xem đã chọn kích cỡ chưa
+    if (!selectedSize) {
+      alert('Please select a size');
+      return;
+    }
 
-  // Check if data is available before rendering
-  if (!data || !Object.keys(data).length) {
-    return <LoadingScreen/>;
-  }
+    // Tạo đối tượng sản phẩm
+    const productToAdd = {
+      name: data.name,
+      price: data.price,
+      size: selectedSize,
+      image: data.images[0],
+      quantity: 1, // Số lượng mặc định là 1
+    };
+
+    // Truy vấn và cập nhật dữ liệu trong cơ sở dữ liệu
+    const db = getDatabase(app);
+    const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+
+    // Thêm sản phẩm vào giỏ hàng của người dùng
+    push(child(userRef, 'cart'), productToAdd)
+      .then(() => {
+        console.log('Product added to cart successfully');
+      })
+      .catch((error) => {
+        console.error('Error adding product to cart:', error);
+      });
+  };
+
+
+  if (!data || !Object.keys(data).length)
+    return <LoadingScreen />;
   return (
     <View >
       <Image source={{ uri: data.images[0] }} className=" h-[350px]" />
@@ -49,13 +86,12 @@ const Detail = () => {
         </View>
         <View className="flex-row ">
           {data.sizes.map((size, index) => (
-            <View key={index} className="mr-6 border border-black w-[40px] h-[30px] items-center justify-center rounded-full">
-              <Text >{size}</Text>
-            </View> 
+            <TouchableOpacity key={index} onPress={() => { handleSizeSelection(size) }} className={size == selectedSize ? `bg-black ${styleSizeButton}` : styleSizeButton}>
+              <Text className={size == selectedSize ? 'text-white' : 'text-black'}>{size}</Text>
+            </TouchableOpacity>
           ))}
         </View>
-
-        <TouchableOpacity className="bg-black rounded-2xl justify-center items-center h-[45px] my-7">
+        <TouchableOpacity onPress={addToCart} className={styleAddToCartButton}>
           <Text className="text-white">Add to Cart</Text>
         </TouchableOpacity>
       </View>

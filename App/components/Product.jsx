@@ -9,7 +9,7 @@ const Product = ({ data }) => {
     if (!data || !Object.keys(data).length)
         return <LoadingScreen/>;
     return (
-        <View>  
+        <View className="m-[-4px]">  
             <View className="flex-row flex-wrap">
                 {data.map((item, index) => (
                     <View key={index} className="p-1 w-1/2">

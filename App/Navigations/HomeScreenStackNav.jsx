@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 const HomeScreenStackNav = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="home" component={HomeScreen} options={
+      <Stack.Screen name="Home" component={HomeScreen} options={
         {
           headerShown: false,
         }

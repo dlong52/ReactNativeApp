@@ -14,6 +14,7 @@ import { Fontisto } from '@expo/vector-icons';
 import HomeScreenStackNav from './HomeScreenStackNav';
 import ExploreScreenStackNav from './ExploreScreenStackNav';
 import AuthScreenStack from './AuthScreenStack';
+import ProfileScreenStack from './ProfileScreenStack';
 
 export default function TabNavigation() {
     const Tab = createBottomTabNavigator();
@@ -58,7 +59,7 @@ export default function TabNavigation() {
                 }} />
             <Tab.Screen
                 name='profile'
-                component={ProfileScreen}
+                component={ProfileScreenStack}
                 options={{
                     tabBarLabel: ({ color }) => (
                         <Text style={{ color: color, fontSize: 12 }} >Profile</Text>

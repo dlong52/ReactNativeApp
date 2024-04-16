@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const ExploreScreenStackNav = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="explore" component={ExploreScreen} options={
+      <Stack.Screen name="Explore" component={ExploreScreen} options={
         {
           headerShown: false,
         }
