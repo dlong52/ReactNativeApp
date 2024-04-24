@@ -3,7 +3,7 @@ import React from 'react'
 
 const PaymentMethodScreen = () => {
   return (
-    <View>
+    <View  className="flex items-center justify-center h-full w-full">
       <Text>PaymentMethodScreen</Text>
     </View>
   )

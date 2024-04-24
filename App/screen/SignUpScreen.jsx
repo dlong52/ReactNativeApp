@@ -1,7 +1,9 @@
 import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+
 import { Ionicons } from '@expo/vector-icons';
+
 import { auth } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
@@ -9,11 +11,12 @@ import { getDatabase, ref, set } from 'firebase/database';
 
 const SignUpScreen = () => {
   const navigation = useNavigation()
+
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
-  
+
   const signUp = async () => {
     setLoading(true)
     try {
@@ -27,12 +30,12 @@ const SignUpScreen = () => {
       }
       const userData = {
         username: respone.user.providerData[0].displayName,
-        email: respone.user.email,  
+        email: respone.user.email,
         phone: "",
         address: "",
         cart: [],
         orders: [],
-        created_at: Date.now(), 
+        created_at: Date.now(),
         updated_at: Date.now()
       };
 
@@ -43,7 +46,7 @@ const SignUpScreen = () => {
         .catch((error) => {
           console.error("Lỗi khi lưu thông tin người dùng: ", error);
         });
-      alert("User created successfully")
+      alert("Sign Up Success")
     } catch (error) {
       console.log(error);
       alert('Error creating user')

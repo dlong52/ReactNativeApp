@@ -3,7 +3,7 @@ import React from 'react'
 
 const HelpCenterScreen = () => {
   return (
-    <View>
+    <View className="flex items-center justify-center h-full w-full">
       <Text>HelpCenterScreen</Text>
     </View>
   )

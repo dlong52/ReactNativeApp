@@ -1,6 +1,5 @@
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
-import { useUser, useAuth } from "@clerk/clerk-expo";
 import { useNavigation } from '@react-navigation/native'
 
 
@@ -14,10 +13,17 @@ import { auth } from '../../firebaseConfig';
 export default function ProfileScreen() {
   const navigation = useNavigation()
 
-  const { user } = useUser();
   const userInfo = auth.currentUser;
 
-  const { isLoaded, signOut } = useAuth();
+  const signOut = async () => {
+    try {
+      await auth.signOut();
+      // Đăng xuất thành công, bạn có thể thực hiện các hành động phù hợp ở đây
+    } catch (error) {
+      console.error('Error signing out:', error.message);
+      // Xử lý lỗi nếu cần thiết
+    }
+  };
   const handleLogout = () => {
     Alert.alert(
       "Confirm logout",
@@ -38,20 +44,15 @@ export default function ProfileScreen() {
       { cancelable: true }
     );
   };
-  if (!isLoaded) {
-    return null;
-  }
   const styleButtonProfile = "flex flex-row justify-between h-[55px] items-center border-b border-gray-400"
   return (
     <View className="p-6 pt-7">
       <View className="items-center">
-        {user ?
-          (<Image source={{ uri: user?.imageUrl }} className="w-[90px] h-[90px] rounded-full" />) :
-          (<View className="w-[90px] h-[90px] bg-slate-600 rounded-full flex items-center justify-center">
-            <Text className="text-[40px] text-white">{userInfo.displayName.charAt(0)}</Text>
-          </View>)}
-        <Text className=" text-[25px] mt-3 font-bold">{user ? user.fullName : userInfo.displayName}</Text>
-        <Text className=" text-[16px] mt-1 text-gray-700">{user ? user.primaryEmailAddress.emailAddress : userInfo.email}</Text>
+        <View className="w-[90px] h-[90px] bg-slate-600 rounded-full flex items-center justify-center">
+          <Text className="text-[40px] text-white">{userInfo.displayName.charAt(0)}</Text>
+        </View>
+        <Text className=" text-[25px] mt-3 font-bold">{userInfo.displayName}</Text>
+        <Text className=" text-[16px] mt-1 text-gray-700">{userInfo.email}</Text>
       </View>
       <View className="mt-6">
         <TouchableOpacity

@@ -1,4 +1,4 @@
-import { View, Text, Image, Button, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { getDatabase, ref, query, orderByChild, equalTo, onValue, child, push } from 'firebase/database';
@@ -24,46 +24,36 @@ const Detail = () => {
       onValue(q, (snapshot) => {
         const dataFromDb = snapshot.val();
         if (dataFromDb) {
-          // Convert object to array
           const dataArray = Object.keys(dataFromDb).map((key) => ({ id: key, ...dataFromDb[key] }));
-          setData(dataArray[0]); // Assuming you only expect one result
+          setData(dataArray[0]);
         }
       }, (error) => {
         console.error('Error fetching data:', error);
       });
     };
-
     fetchData();
-
   }, [params.detail]);
   const handleSizeSelection = (size) => {
     setSelectedSize(size);
   };
-console.log(data);
   const addToCart = () => {
-    // Kiểm tra xem đã chọn kích cỡ chưa
     if (!selectedSize) {
       alert('Please select a size');
       return;
     }
-
-    // Tạo đối tượng sản phẩm
+    const db = getDatabase(app);
+    const userRef = ref(db, `Users/${auth.currentUser.uid}`);
     const productToAdd = {
       name: data.name,
       price: data.price,
       size: selectedSize,
       image: data.images[0],
-      quantity: 1, // Số lượng mặc định là 1
+      quantity: 1,
     };
-
-    // Truy vấn và cập nhật dữ liệu trong cơ sở dữ liệu
-    const db = getDatabase(app);
-    const userRef = ref(db, `Users/${auth.currentUser.uid}`);
-
-    // Thêm sản phẩm vào giỏ hàng của người dùng
     push(child(userRef, 'cart'), productToAdd)
       .then(() => {
         console.log('Product added to cart successfully');
+        alert('Product added successfully');
       })
       .catch((error) => {
         console.error('Error adding product to cart:', error);

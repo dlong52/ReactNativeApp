@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
 import * as WebBrowser from "expo-web-browser";
-import { useOAuth } from '@clerk/clerk-expo';
 import { useNavigation } from '@react-navigation/native'
-import { useWarmUpBrowser } from '../../hooks/useWarmUpBrowser';
 import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -12,39 +10,20 @@ const LoginScreen = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
-    useWarmUpBrowser();
     const navigation = useNavigation()
 
     const signIn = async () => {
         setLoading(true)
         try {
             const respone = await signInWithEmailAndPassword(auth, email, password)
-
-            console.log(respone);
-            console.log("Dang nhap thanh cong");
+            alert("Login successful")
         } catch (error) {
             console.log(error);
-            alert('Error login')
+            alert('Check your email and password')
         } finally {
             setLoading(false)
         }
     }
-    const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
-
-    const onPress = React.useCallback(async () => {
-        try {
-            const { createdSessionId, signIn, signUp, setActive } =
-                await startOAuthFlow();
-
-            if (createdSessionId) {
-                setActive({ session: createdSessionId });
-            } else {
-                // Use signIn or signUp for next steps such as MFA
-            }
-        } catch (err) {
-            console.error("OAuth error", err);
-        }
-    }, []);
     return (
         <View className="bg-gray-900">
             <View className=" bg-gray-900 p-6">
@@ -85,7 +64,7 @@ const LoginScreen = () => {
                     <Text className="text-white font-medium">Login</Text>
                 </TouchableOpacity>
                 <Text className="text-center py-3 font-bold">Or</Text>
-                <TouchableOpacity onPress={onPress} className=" shadow flex-row w-full h-[45px] bg-white items-center justify-center rounded-md">
+                <TouchableOpacity className=" shadow flex-row w-full h-[45px] bg-white items-center justify-center rounded-md">
                     <Image className="h-[25px] w-[25px] mx-2" source={require('../../assets/images/googleIcon.png')} />
                     <Text className=" text-gray-600 font-medium">Sign in with Google</Text>
                 </TouchableOpacity>

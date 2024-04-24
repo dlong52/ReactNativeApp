@@ -8,13 +8,13 @@ import TabNavigation from './App/Navigations/TabNavigation';
 import AuthScreenStack from './App/Navigations/AuthScreenStack';
 import { app, auth } from './firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
-
+   
 // Tạo context
 const UserContext = createContext(null);
 
 export default function App() {
   const [user, setUser] = useState(null);  
-  useEffect(() => {
+  useEffect(() => { 
     onAuthStateChanged(auth, (user) => {
       console.log("User:", user);
       setUser(user);
@@ -28,7 +28,6 @@ export default function App() {
         <View className="flex-1 bg-white">
           <StatusBar backgroundColor="white" />
           <NavigationContainer>
-            {/* Sử dụng thông tin người dùng từ context */}
             {user ? <TabNavigation /> : <AuthScreenStack />}
           </NavigationContainer>
         </View>

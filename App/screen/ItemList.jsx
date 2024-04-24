@@ -26,7 +26,6 @@ const ItemList = () => {
         console.error('Error fetching data:', error);
       });
     };
-
     fetchData();
   }, [params.category]);
 

@@ -24,4 +24,4 @@ const WelcomeScreen = () => {
         </View>
     );
 }
-export default WelcomeScreen;
+export default WelcomeScreen; 
