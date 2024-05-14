@@ -5,16 +5,17 @@ import CartScreen from '../screen/CartScreen';
 import ItemList from '../screen/ItemList';
 import HomeScreen from '../screen/HomeScreen';
 import Detail from '../screen/Detail';
+import CheckoutScreen from '../screen/CheckoutScreen';
 
 const Stack = createStackNavigator();
 const HomeScreenStackNav = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} options={
-        {
-          headerShown: false,
-        }
-      } />
+      <Stack.Screen
+        name="Home"
+        options={{ headerShown: false, }}
+        component={HomeScreen}
+      />
       <Stack.Screen
         name="item-list"
         component={ItemList}
@@ -35,6 +36,10 @@ const HomeScreenStackNav = () => {
             title: "Detail",
             headerBackTitleStyle: { textTransform: 'capitalize' },
           })}
+      />
+      <Stack.Screen
+        name="checkout"
+        component={CheckoutScreen}
       />
     </Stack.Navigator>
   )

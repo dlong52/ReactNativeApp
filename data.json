@@ -1,610 +1,35 @@
 {
-  "Products": [
+  "Categories": [
     {
-      "product_id": "1",
-      "name": "ÁO SƠ MI HỌA TIẾT NÉT VẼ",
-      "description": "Áo sơ mi chất liệu vải giúp giảm tối đa nhu cầu là ủi sau khi giặt. Cổ ve nhọn khoét chữ K, cộc tay. Gấu xẻ bên. Cài phía trước bằng hàng khuy cài.",
-      "price": 1299000,
-      "category": "Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Đen",
-        "Trắng",
-        "Xanh"
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/59d4/8e79/24034e7295a8/5116498c5204/07545426401-e1/07545426401-e1.jpg?ts=1711984932373&w=563",
-        "https://static.zara.net/assets/public/9aff/a0e3/345248868f02/5839e0e62666/07545426401-e2/07545426401-e2.jpg?ts=1711984950111&w=563"
-      ],
-      "ratings": [
-        4,
-        5,
-        4
-      ],
-      "created_at": "2024-04-06T10:00:00Z",
-      "updated_at": "2024-04-06T10:00:00Z"
+      "category_id": "shirt",
+      "description": "Danh mục quần áo dành cho nam giới",
+      "img_url": "https://static.zara.net/assets/public/1475/62b8/d96846918ca7/802f7574813b/05679410401-e1/05679410401-e1.jpg?ts=1712218812711&w=563",
+      "name": "Shirt"
     },
     {
-      "product_id": "2",
-      "name": "STRIPED TEXTURED SHIRT",
-      "description": "Relaxed fit collared shirt made of a cotton blend fabric. Long sleeves with buttoned cuffs. Chest patch pocket. Button-up front.",
-      "price": 1299000,
-      "category": "Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/a56b/b716/46184869aaf8/32d971b6161f/04443154403-e1/04443154403-e1.jpg?ts=1712218824278&w=563",
-        "https://static.zara.net/assets/public/8d0a/c33e/a4ff4c6d9b19/4f2ae66059e0/04443154403-e2/04443154403-e2.jpg?ts=1712218810668&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
+      "category_id": "tshirt",
+      "description": "Danh mục quần áo dành cho nam giới",
+      "img_url": "https://static.zara.net/assets/public/103a/0310/382f465f8a2a/547d4c27561e/01887450832-e1/01887450832-e1.jpg?ts=1704812411391&w=563",
+      "name": "T-Shirt"
     },
     {
-      "product_id": "3",
-      "name": "ÁO SƠ MI DENIM BẠC MÀU",
-      "description": "Áo sơ mi vải denim sợi cotton, dáng relaxed fit. Cổ ve lật, dài tay, cổ tay bo và cài khuy. Có một túi đáp trước ngực. Kiểu bạc màu. Cài phía trước bằng hàng khuy cài.",
-      "price": 1599000,
-      "category": "Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/77bf/dfba/41034be1852f/5d19ef85e0b6/06987465406-e1/06987465406-e1.jpg?ts=1710773925150&w=563",
-        "https://static.zara.net/assets/public/d0fa/d7ee/b3644649b91f/ebccc5b7bf0a/06987465406-e2/06987465406-e2.jpg?ts=1710773935479&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
+      "category_id": "jeans",
+      "description": "Danh mục quần áo dành cho nam giới",
+      "img_url": "https://static.zara.net/assets/public/465b/e9ad/e13f4cda8b3b/5e4f7db0bb02/08062400407-e1/08062400407-e1.jpg?ts=1708000761751&w=563",
+      "name": "Jeans"
     },
     {
-      "product_id": "4",
-      "name": "FADED PRINT T-SHIRT",
-      "description": "Faded T-shirt with a round neck and short sleeves. Featuring faded contrast prints on the front and back.",
-      "price": 799000,
-      "category": "T-Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/1dad/e9e5/57db4e7a917f/962303a55ef8/06224450633-e1/06224450633-e1.jpg?ts=1712157917574&w=563",
-        "https://static.zara.net/assets/public/86b7/8f9f/5d5e42078b66/c1d00164009e/06224450633-e2/06224450633-e2.jpg?ts=1712157916145&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "5",
-      "name": "ÁO PHÔNG THÊU HÌNH MẶT TRỜ",
-      "description": "Áo phông dáng rộng, cổ tròn, cộc tay. In và thêu họa tiết khác màu ở phía trước và sau lưng.",
-      "price": 799000,
-      "category": "T-Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/4217/51ee/140f4d44a25f/a396cc810c1a/00962460250-e1/00962460250-e1.jpg?ts=1711984919136&w=563",
-        "https://static.zara.net/assets/public/671d/8aa2/226b47e590e4/84ecac565635/00962460250-e2/00962460250-e2.jpg?ts=1711984920362&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "6",
-      "name": "CROCHET KNIT T-SHIRT",
-      "description": "Short sleeve knit T-shirt made of an open-textured fabric. Round neck and ribbed trims.",
-      "price": 350000,
-      "category": "T-Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/af68/401e/92dd4170bf3c/caa3c202413a/02632412400-e1/02632412400-e1.jpg?ts=1712071389596&w=563",
-        "https://static.zara.net/assets/public/e5f2/35e8/c4fe45159047/0c2308ce477c/02632412400-e2/02632412400-e2.jpg?ts=1712071387874&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "7",
-      "name": "ÁO SƠ MI CỔ TRỤ",
-      "description": "Áo sơ mi vải cotton, dáng relaxed fit. Cổ trụ, có hàng khuy cài phía trước. Dài tay, cổ tay bo và cài khuy.",
-      "price": 1299000,
-      "category": "",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/eb8f/bdc0/68c4400ab537/3907f1a0f22f/01063470711-e1/01063470711-e1.jpg?ts=1710435801701&w=563",
-        "https://static.zara.net/assets/public/476c/9bf2/9d15450bae55/63abccd74688/01063470711-e2/01063470711-e2.jpg?ts=1710435793728&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "8",
-      "name": "BAGGY FIT JEANS",
-      "description": "Baggy fit jeans. Five pockets. Vintage-effect faded detail. Front zip fly and button fastening.",
-      "price": 1799000,
-      "category": "Jeans",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/a5e2/536a/fa1948cca313/5b14295af172/09794490400-e1/09794490400-e1.jpg?ts=1712585759482&w=563",
-        "https://static.zara.net/assets/public/0d0c/6445/31da4fa69107/fffdf34a839d/09794490400-e2/09794490400-e2.jpg?ts=1712585759505&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "9",
-      "name": "JEANS SLIM CROPPED FIT",
-      "description": "Quần jeans slim dáng crop. Có 5 túi. Kiểu bạc màu. Cài phía trước bằng khóa kéo và khuy.",
-      "price": 1099000,
-      "category": "Jeans",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/3a63/c1d8/305f4b1bb33b/74297c6ada45/08062455400-e1/08062455400-e1.jpg?ts=1705588320037&w=563",
-        "https://static.zara.net/assets/public/2fe3/bab3/20bb4aea80c9/bfa3b3dbca2f/08062455400-e2/08062455400-e2.jpg?ts=1705588326760&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "10",
-      "name": "QUẦN JEANS DÁNG STRAIGHT CÓ TÚI",
-      "description": "Quần jeans vải denim làm từ sợi cotton, dáng straight fit. Có 5 túi. Có túi đáp hai bên ống quần. Cài phía trước bằng khuy cài.",
-      "price": 1999000,
-      "category": "Jeans",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/bb1a/af18/bd784c66bb3b/bde32fe10c40/08062445703-e1/08062445703-e1.jpg?ts=1707396843525&w=563",
-        "https://static.zara.net/assets/public/bb1a/af18/bd784c66bb3b/bde32fe10c40/08062445703-e1/08062445703-e1.jpg?ts=1707396843525&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "11",
-      "name": "QUẦN JEANS DÁNG REGULAR FIT",
-      "description": "Quần jeans dáng regular fit. Có 5 túi. Kiểu bạc màu. Cài phía trước bằng hàng khuy cài.",
-      "price": 1799000,
-      "category": "Jeans",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/64b7/9fec/fbaf494599e7/c8ff93dee5f6/02553398802-e1/4000.jpg?ts=1696323015104&w=563",
-        "https://static.zara.net/assets/public/ae30/980f/3b9e4a158066/cb99b1a4e587/02553398802-e2/4000.jpg?ts=1696323012381&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "12",
-      "name": "ÁO KHOÁC VẢI KỸ THUẬT CÓ TÚI",
-      "description": "Áo khoác vải kỹ thuật. Cổ ve lật, dài tay, cổ tay bo thun co giãn. Có hai túi đáp cài khóa kéo phía trước. Gấu áo điều chỉnh bằng dây rút co giãn ở hai bên. Cài phía trước bằng khuy bấm",
-      "price": 1999000,
-      "category": "Jacket",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/35b3/f4a5/aecb44279d41/818056879b19/08281980707-e1/08281980707-e1.jpg?ts=1711984933004&w=563",
-        "https://static.zara.net/assets/public/ee75/cbc5/976643fe9660/78bb72a5c0f3/08281980707-e2/08281980707-e2.jpg?ts=1711984929221&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "13",
-      "name": "ÁO KHOÁC BOMBER BẠC MÀU",
-      "description": "Áo khoác nhẹ chất liệu vải dệt sợi cotton. Cổ co giãn, dài tay, có túi ở một bên tay áo. Có túi may viền hai bên hông. Một túi ở lớp vải lót bên trong. Gấu bo vải gân. Kiểu bạc màu. Cài phía trước bằng khóa kéo.",
-      "price": 1899000,
-      "category": "Jacket",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/706f/b3e3/355249e4b179/38ff73ebc7c0/06987351406-e1/06987351406-e1.jpg?ts=1712132749556&w=563",
-        "https://static.zara.net/assets/public/cb80/a439/086f4cb087e4/726ac19e3805/06987351406-e2/06987351406-e2.jpg?ts=1712132750520&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "14",
-      "name": "ÁO KHOÁC CÓ NHIỀU TÚI",
-      "description": "Áo khoác vải cotton nhẹ. Cổ ve lật, dài tay, có túi một bên tay áo. Có túi cài khóa kéo hai bên hông. Cài phía trước bằng khóa kéo",
-      "price": 1899000,
-      "category": "Jacket",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/ecf3/e10c/99d442eeba47/97d092aa7117/03715308914-e1/03715308914-e1.jpg?ts=1712228620789&w=563",
-        "https://static.zara.net/assets/public/5732/798f/16be47b8ba39/00204828cf3b/03715308914-e2/03715308914-e2.jpg?ts=1711984933277&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "15",
-      "name": "QUẦN JEANS CÓ TÚI THUỘC DÒNG SẢN PHẨM UTILITY",
-      "description": "Quần dáng relaxed fit. Có hai túi phía trước và hai túi đáp phía sau. Có các túi đa năng ở hai bên ống quần. Gấu may con đỉa. Kiểu bạc màu. Cài khóa kéo và khuy phía trước.",
-      "price": 1999000,
-      "category": "Jeans",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/d07c/cdb9/01034f059413/55e6b8efa4b4/05575471400-e1/05575471400-e1.jpg?ts=1707295832894&w=563",
-        "https://static.zara.net/assets/public/4591/6632/ff17450aa61d/6dad2a16a90f/05575471400-e2/05575471400-e2.jpg?ts=1707295857133&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "16",
-      "name": "ÁO PHÔNG DỆT KIM KẺ NGANG",
-      "description": "Áo phông vải cotton dệt kim. Cổ tròn, cộc tay. Phần cổ chân bo vải gân.",
-      "price": 1299000,
-      "category": "T-Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/142a/ae7a/1cbe4d29a4a4/0cb43c82e19f/07140409712-e1/07140409712-e1.jpg?ts=1712045330566&w=563",
-        "https://static.zara.net/assets/public/608c/f07d/c1ab4d98a75b/32ec747f2829/07140409712-e2/07140409712-e2.jpg?ts=1712045330937&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "17",
-      "name": "ÁO PHÔNG CÓ TÚI DẬP ĐINH TÁN",
-      "description": "Áo phông cổ tròn, cộc tay. Có một túi đáp dập đinh tán kim loại trước ngực.",
-      "price": 799000,
-      "category": "T-Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/adf7/c669/8be04fbe8428/cc90d7dcd931/04087430800-e1/04087430800-e1.jpg?ts=1706119027607&w=563",
-        "https://static.zara.net/assets/public/ea41/a204/61024f9a8d87/56dda95d60ba/04087430800-e2/04087430800-e2.jpg?ts=1706119029342&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "18",
-      "name": "ÁO SƠ MI DÁNG CROP HỌA TIẾT KẺ CA RÔ",
-      "description": "Áo sơ mi dáng crop. Cổ ve lật, cộc tay. Có một túi đáp trước ngực. Cài phía trước bằng hàng khuy cài.",
-      "price": 1299000,
-      "category": "Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/ef8d/8741/bde0471396bc/67ed19111912/02688340710-e1/02688340710-e1.jpg?ts=1708591348952&w=563",
-        "https://static.zara.net/assets/public/4de7/0e70/140e41abbc4e/0e10abcfaef2/02688340710-e2/02688340710-e2.jpg?ts=1708591346311&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    },
-    {
-      "product_id": "19",
-      "name": "ÁO SƠ MI VẢI JACQUARD SẦN",
-      "description": "Áo sơ mi dáng relaxed fit. Cổ ve lật, cộc tay. Có một túi đáp trước ngực. Cài khuy phía trước.",
-      "price": 1599000,
-      "category": "Shirt",
-      "brand": "Zara",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "",
-        "",
-        ""
-      ],
-      "images": [
-        "https://static.zara.net/assets/public/4b87/b5e2/44dd4b8e9682/eb935e5e2a60/01437404753-e1/01437404753-e1.jpg?ts=1708443248260&w=563",
-        "https://static.zara.net/assets/public/6d9c/6388/180f4b07a7c7/5d4f0d3a7da0/01437404753-e2/01437404753-e2.jpg?ts=1708443245828&w=563"
-      ],
-      "ratings": [
-        5,
-        4
-      ],
-      "created_at": "",
-      "updated_at": ""
-    }
-  ],
-  "Sliders": [
-    {
-      "img_url": "https://img.freepik.com/free-vector/festa-junina-sale-promotional-illustration-with-paper-lantern-light-bulb-billboard-lettering_1314-3346.jpg?t=st=1712640078~exp=1712640678~hmac=f775b59a9e41beb1d904da6da9f58c4c26064ffa1bc5c49d3aded81a79774116"
-    },
-    {
-      "img_url": "https://img.freepik.com/free-psd/flat-design-discount-banner-template_23-2149397071.jpg?w=1060&t=st=1712645495~exp=1712646095~hmac=0cc422c90991d2bbc36cdaaf81433bc95c765df3fda4275cb2ed8481ec472aeb"
-    },
-    {
-      "img_url": "https://img.freepik.com/free-vector/flat-12-12-sale-landing-page-template_23-2149171949.jpg?w=996"
-    },
-    {
-      "img_url": "https://img.freepik.com/free-vector/gradient-landing-page-template-11-11-sale-event_23-2150810227.jpg?w=1060"
-    }
-  ],
-  "Users": [
-    {
-      "user_id": "123",
-      "email": "user@example.com",
-      "password": "hashed_password",
-      "full_name": "Nguyen Van A",
-      "phone": "0987654321",
-      "address": "123 Đường ABC, Quận XYZ, Thành phố HCM",
-      "cart": [
-        {
-          "product_id": "1",
-          "quantity": 2
-        },
-        {
-          "product_id": "2",
-          "quantity": 1
-        }
-      ],
-      "orders": [
-        {
-          "order_id": "456",
-          "total_price": 950000,
-          "status": "Đang xử lý"
-        },
-        {
-          "order_id": "457",
-          "total_price": 800000,
-          "status": "Đã giao hàng"
-        }
-      ],
-      "created_at": "2024-04-04T15:00:00Z",
-      "updated_at": "2024-04-06T12:00:00Z"
+      "category_id": "jacket",
+      "description": "Danh mục quần áo dành cho nam giới",
+      "img_url": "https://static.zara.net/assets/public/706f/b3e3/355249e4b179/38ff73ebc7c0/06987351406-e1/06987351406-e1.jpg?ts=1712132749556&w=563",
+      "name": "Jacket"
     }
   ],
   "Orders": [
     {
+      "created_at": "2024-04-05T09:00:00Z",
       "order_id": "456",
-      "user_id": "123",
+      "payment_method": "COD",
       "products": [
         {
           "product_id": "1",
@@ -615,47 +40,641 @@
           "quantity": 1
         }
       ],
-      "total_price": 950000,
-      "status": "Đang xử lý",
       "shipping_address": "123 Đường ABC, Quận XYZ, Thành phố HCM",
-      "payment_method": "COD",
-      "created_at": "2024-04-05T09:00:00Z"
+      "status": "Đang xử lý",
+      "total_price": 950000,
+      "user_id": "123"
+    }
+  ],
+  "Products": [
+    {
+      "brand": "Zara",
+      "category": "Shirt",
+      "colors": [
+        "Đen",
+        "Trắng",
+        "Xanh"
+      ],
+      "created_at": "2024-04-06T10:00:00Z",
+      "description": "Áo sơ mi chất liệu vải giúp giảm tối đa nhu cầu là ủi sau khi giặt. Cổ ve nhọn khoét chữ K, cộc tay. Gấu xẻ bên. Cài phía trước bằng hàng khuy cài.",
+      "images": [
+        "https://static.zara.net/assets/public/3431/427d/2f524fbd91d9/9afc04734d8b/07545426401-a1/07545426401-a1.jpg?ts=1712154277468&w=563",
+        "https://static.zara.net/assets/public/59d4/8e79/24034e7295a8/5116498c5204/07545426401-e1/07545426401-e1.jpg?ts=1711984932373&w=563",
+        "https://static.zara.net/assets/public/9aff/a0e3/345248868f02/5839e0e62666/07545426401-e2/07545426401-e2.jpg?ts=1711984950111&w=563"
+      ],
+      "name": "ÁO SƠ MI HỌA TIẾT NÉT VẼ",
+      "price": 1299000,
+      "product_id": "1",
+      "ratings": [
+        4,
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": "2024-04-06T10:00:00Z"
+    },
+    {
+      "brand": "Zara",
+      "category": "Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Relaxed fit collared shirt made of a cotton blend fabric. Long sleeves with buttoned cuffs. Chest patch pocket. Button-up front.",
+      "images": [
+        "https://static.zara.net/assets/public/a56b/b716/46184869aaf8/32d971b6161f/04443154403-e1/04443154403-e1.jpg?ts=1712218824278&w=563",
+        "https://static.zara.net/assets/public/8d0a/c33e/a4ff4c6d9b19/4f2ae66059e0/04443154403-e2/04443154403-e2.jpg?ts=1712218810668&w=563"
+      ],
+      "name": "STRIPED TEXTURED SHIRT",
+      "price": 1299000,
+      "product_id": "2",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo sơ mi vải denim sợi cotton, dáng relaxed fit. Cổ ve lật, dài tay, cổ tay bo và cài khuy. Có một túi đáp trước ngực. Kiểu bạc màu. Cài phía trước bằng hàng khuy cài.",
+      "images": [
+        "https://static.zara.net/assets/public/d510/4be5/ffaa42a0bb86/6db19fa9a60d/06987465406-200-p/06987465406-200-p.jpg?ts=1711960806632&w=563",
+        "https://static.zara.net/assets/public/77bf/dfba/41034be1852f/5d19ef85e0b6/06987465406-e1/06987465406-e1.jpg?ts=1710773925150&w=563",
+        "https://static.zara.net/assets/public/d0fa/d7ee/b3644649b91f/ebccc5b7bf0a/06987465406-e2/06987465406-e2.jpg?ts=1710773935479&w=563"
+      ],
+      "name": "ÁO SƠ MI DENIM BẠC MÀU",
+      "price": 1599000,
+      "product_id": "3",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "T-Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Faded T-shirt with a round neck and short sleeves. Featuring faded contrast prints on the front and back.",
+      "images": [
+        "https://static.zara.net/assets/public/e58e/cd94/6e2e4f9cb78c/15544c49237f/06224476650-a1/06224476650-a1.jpg?ts=1712734464780&w=563",
+        "https://static.zara.net/assets/public/1dad/e9e5/57db4e7a917f/962303a55ef8/06224450633-e1/06224450633-e1.jpg?ts=1712157917574&w=563",
+        "https://static.zara.net/assets/public/86b7/8f9f/5d5e42078b66/c1d00164009e/06224450633-e2/06224450633-e2.jpg?ts=1712157916145&w=563"
+      ],
+      "name": "FADED PRINT T-SHIRT",
+      "price": 799000,
+      "product_id": "4",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "T-Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo phông dáng rộng, cổ tròn, cộc tay. In và thêu họa tiết khác màu ở phía trước và sau lưng.",
+      "images": [
+        "https://static.zara.net/assets/public/0aa1/2533/9a7c4135aff1/5c1b08d117b4/00962460250-a1/00962460250-a1.jpg?ts=1712050235301&w=563",
+        "https://static.zara.net/assets/public/4217/51ee/140f4d44a25f/a396cc810c1a/00962460250-e1/00962460250-e1.jpg?ts=1711984919136&w=563",
+        "https://static.zara.net/assets/public/671d/8aa2/226b47e590e4/84ecac565635/00962460250-e2/00962460250-e2.jpg?ts=1711984920362&w=563"
+      ],
+      "name": "ÁO PHÔNG THÊU HÌNH MẶT TRỜI",
+      "price": 799000,
+      "product_id": "5",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "T-Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Short sleeve knit T-shirt made of an open-textured fabric. Round neck and ribbed trims.",
+      "images": [
+        "https://static.zara.net/assets/public/85aa/a774/59854fce9fab/fe078124365d/00048405400-a1/00048405400-a1.jpg?ts=1712742546793&w=563",
+        "https://static.zara.net/assets/public/af68/401e/92dd4170bf3c/caa3c202413a/02632412400-e1/02632412400-e1.jpg?ts=1712071389596&w=563",
+        "https://static.zara.net/assets/public/e5f2/35e8/c4fe45159047/0c2308ce477c/02632412400-e2/02632412400-e2.jpg?ts=1712071387874&w=563"
+      ],
+      "name": "CROCHET KNIT T-SHIRT",
+      "price": 350000,
+      "product_id": "6",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo sơ mi vải cotton, dáng relaxed fit. Cổ trụ, có hàng khuy cài phía trước. Dài tay, cổ tay bo và cài khuy.",
+      "images": [
+        "https://static.zara.net/assets/public/8a3e/af7a/151a471294c2/a900dee0c577/01063470711-a4/01063470711-a4.jpg?ts=1710490546875&w=563",
+        "https://static.zara.net/assets/public/eb8f/bdc0/68c4400ab537/3907f1a0f22f/01063470711-e1/01063470711-e1.jpg?ts=1710435801701&w=563",
+        "https://static.zara.net/assets/public/476c/9bf2/9d15450bae55/63abccd74688/01063470711-e2/01063470711-e2.jpg?ts=1710435793728&w=563"
+      ],
+      "name": "ÁO SƠ MI CỔ TRỤ",
+      "price": 1299000,
+      "product_id": "7",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jeans",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Baggy fit jeans. Five pockets. Vintage-effect faded detail. Front zip fly and button fastening.",
+      "images": [
+        "https://static.zara.net/assets/public/3ba7/419f/4bfd4822a02b/3ca78d2741bf/09794490400-a1/09794490400-a1.jpg?ts=1712653451409&w=563",
+        "https://static.zara.net/assets/public/a5e2/536a/fa1948cca313/5b14295af172/09794490400-e1/09794490400-e1.jpg?ts=1712585759482&w=563",
+        "https://static.zara.net/assets/public/0d0c/6445/31da4fa69107/fffdf34a839d/09794490400-e2/09794490400-e2.jpg?ts=1712585759505&w=563"
+      ],
+      "name": "BAGGY FIT JEANS",
+      "price": 1799000,
+      "product_id": "8",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jeans",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Quần jeans slim dáng crop. Có 5 túi. Kiểu bạc màu. Cài phía trước bằng khóa kéo và khuy.",
+      "images": [
+        "https://static.zara.net/assets/public/54ce/8b89/e66c46a5ad4b/a4e5435d147a/09794455427-a1/09794455427-a1.jpg?ts=1705669172238&w=563",
+        "https://static.zara.net/assets/public/3a63/c1d8/305f4b1bb33b/74297c6ada45/08062455400-e1/08062455400-e1.jpg?ts=1705588320037&w=563",
+        "https://static.zara.net/assets/public/2fe3/bab3/20bb4aea80c9/bfa3b3dbca2f/08062455400-e2/08062455400-e2.jpg?ts=1705588326760&w=563"
+      ],
+      "name": "JEANS SLIM CROPPED FIT",
+      "price": 1099000,
+      "product_id": "9",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jeans",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Quần jeans vải denim làm từ sợi cotton, dáng straight fit. Có 5 túi. Có túi đáp hai bên ống quần. Cài phía trước bằng khuy cài.",
+      "images": [
+        "https://static.zara.net/assets/public/ba74/df78/b30f4759b7d7/a829601e50af/08062445703-200-p/08062445703-200-p.jpg?ts=1707469627711&w=563",
+        "https://static.zara.net/assets/public/bb1a/af18/bd784c66bb3b/bde32fe10c40/08062445703-e1/08062445703-e1.jpg?ts=1707396843525&w=563",
+        "https://static.zara.net/assets/public/bb1a/af18/bd784c66bb3b/bde32fe10c40/08062445703-e1/08062445703-e1.jpg?ts=1707396843525&w=563"
+      ],
+      "name": "QUẦN JEANS DÁNG STRAIGHT CÓ TÚI",
+      "price": 1999000,
+      "product_id": "10",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jeans",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Quần jeans dáng regular fit. Có 5 túi. Kiểu bạc màu. Cài phía trước bằng hàng khuy cài.",
+      "images": [
+        "https://static.zara.net/assets/public/7cbc/a688/4a35484191f4/81185634c06f/02553398802-200-p/4000.jpg?ts=1696503875056&w=563",
+        "https://static.zara.net/assets/public/64b7/9fec/fbaf494599e7/c8ff93dee5f6/02553398802-e1/4000.jpg?ts=1696323015104&w=563",
+        "https://static.zara.net/assets/public/ae30/980f/3b9e4a158066/cb99b1a4e587/02553398802-e2/4000.jpg?ts=1696323012381&w=563"
+      ],
+      "name": "QUẦN JEANS DÁNG REGULAR FIT",
+      "price": 1799000,
+      "product_id": "11",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jacket",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo khoác vải kỹ thuật. Cổ ve lật, dài tay, cổ tay bo thun co giãn. Có hai túi đáp cài khóa kéo phía trước. Gấu áo điều chỉnh bằng dây rút co giãn ở hai bên. Cài phía trước bằng khuy bấm",
+      "images": [
+        "https://static.zara.net/assets/public/f8ae/941f/52394fefb843/cd2028d39b1e/08281980707-a1/08281980707-a1.jpg?ts=1712241602597&w=563",
+        "https://static.zara.net/assets/public/35b3/f4a5/aecb44279d41/818056879b19/08281980707-e1/08281980707-e1.jpg?ts=1711984933004&w=563",
+        "https://static.zara.net/assets/public/ee75/cbc5/976643fe9660/78bb72a5c0f3/08281980707-e2/08281980707-e2.jpg?ts=1711984929221&w=563"
+      ],
+      "name": "ÁO KHOÁC VẢI KỸ THUẬT CÓ TÚI",
+      "price": 1999000,
+      "product_id": "12",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jacket",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo khoác nhẹ chất liệu vải dệt sợi cotton. Cổ co giãn, dài tay, có túi ở một bên tay áo. Có túi may viền hai bên hông. Một túi ở lớp vải lót bên trong. Gấu bo vải gân. Kiểu bạc màu. Cài phía trước bằng khóa kéo.",
+      "images": [
+        "https://static.zara.net/assets/public/8579/0218/e44a486e9648/78cd947f5042/06987351406-a1/06987351406-a1.jpg?ts=1712144779613&w=563",
+        "https://static.zara.net/assets/public/706f/b3e3/355249e4b179/38ff73ebc7c0/06987351406-e1/06987351406-e1.jpg?ts=1712132749556&w=563",
+        "https://static.zara.net/assets/public/cb80/a439/086f4cb087e4/726ac19e3805/06987351406-e2/06987351406-e2.jpg?ts=1712132750520&w=563"
+      ],
+      "name": "ÁO KHOÁC BOMBER BẠC MÀU",
+      "price": 1899000,
+      "product_id": "13",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jacket",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo khoác vải cotton nhẹ. Cổ ve lật, dài tay, có túi một bên tay áo. Có túi cài khóa kéo hai bên hông. Cài phía trước bằng khóa kéo",
+      "images": [
+        "https://static.zara.net/assets/public/3905/3cc2/534e4ef286b1/5b5681ff93de/03715308914-a1/03715308914-a1.jpg?ts=1712144777651&w=563",
+        "https://static.zara.net/assets/public/ecf3/e10c/99d442eeba47/97d092aa7117/03715308914-e1/03715308914-e1.jpg?ts=1712228620789&w=563",
+        "https://static.zara.net/assets/public/5732/798f/16be47b8ba39/00204828cf3b/03715308914-e2/03715308914-e2.jpg?ts=1711984933277&w=563"
+      ],
+      "name": "ÁO KHOÁC CÓ NHIỀU TÚI",
+      "price": 1899000,
+      "product_id": "14",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Jeans",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Quần dáng relaxed fit. Có hai túi phía trước và hai túi đáp phía sau. Có các túi đa năng ở hai bên ống quần. Gấu may con đỉa. Kiểu bạc màu. Cài khóa kéo và khuy phía trước.",
+      "images": [
+        "https://static.zara.net/assets/public/1af6/1f89/72b64eee9a7e/943982e327e8/05575471400-a1/05575471400-a1.jpg?ts=1707298010092&w=563",
+        "https://static.zara.net/assets/public/d07c/cdb9/01034f059413/55e6b8efa4b4/05575471400-e1/05575471400-e1.jpg?ts=1707295832894&w=563",
+        "https://static.zara.net/assets/public/4591/6632/ff17450aa61d/6dad2a16a90f/05575471400-e2/05575471400-e2.jpg?ts=1707295857133&w=563"
+      ],
+      "name": "QUẦN JEANS CÓ TÚI ",
+      "price": 1999000,
+      "product_id": "15",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "T-Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo phông vải cotton dệt kim. Cổ tròn, cộc tay. Phần cổ chân bo vải gân.",
+      "images": [
+        "https://static.zara.net/assets/public/e868/8151/d8ee431a8ee6/57eb830b6653/07140409712-a4/07140409712-a4.jpg?ts=1712244065483&w=563",
+        "https://static.zara.net/assets/public/142a/ae7a/1cbe4d29a4a4/0cb43c82e19f/07140409712-e1/07140409712-e1.jpg?ts=1712045330566&w=563",
+        "https://static.zara.net/assets/public/608c/f07d/c1ab4d98a75b/32ec747f2829/07140409712-e2/07140409712-e2.jpg?ts=1712045330937&w=563"
+      ],
+      "name": "ÁO PHÔNG DỆT KIM KẺ NGANG",
+      "price": 1299000,
+      "product_id": "16",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "T-Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo phông cổ tròn, cộc tay. Có một túi đáp dập đinh tán kim loại trước ngực.",
+      "images": [
+        "https://static.zara.net/assets/public/3f37/3bd0/80dd4a71a9c5/43222b6369bb/04087430800-a1/04087430800-a1.jpg?ts=1706261255960&w=563",
+        "https://static.zara.net/assets/public/adf7/c669/8be04fbe8428/cc90d7dcd931/04087430800-e1/04087430800-e1.jpg?ts=1706119027607&w=563",
+        "https://static.zara.net/assets/public/ea41/a204/61024f9a8d87/56dda95d60ba/04087430800-e2/04087430800-e2.jpg?ts=1706119029342&w=563"
+      ],
+      "name": "ÁO PHÔNG CÓ TÚI DẬP ĐINH TÁN",
+      "price": 799000,
+      "product_id": "17",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo sơ mi dáng crop. Cổ ve lật, cộc tay. Có một túi đáp trước ngực. Cài phía trước bằng hàng khuy cài.",
+      "images": [
+        "https://static.zara.net/assets/public/ef8d/8741/bde0471396bc/67ed19111912/02688340710-e1/02688340710-e1.jpg?ts=1708591348952&w=563",
+        "https://static.zara.net/assets/public/4de7/0e70/140e41abbc4e/0e10abcfaef2/02688340710-e2/02688340710-e2.jpg?ts=1708591346311&w=563"
+      ],
+      "name": "ÁO SƠ MI DÁNG CROP HỌA TIẾT KẺ CA RÔ",
+      "price": 1299000,
+      "product_id": "18",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
+    },
+    {
+      "brand": "Zara",
+      "category": "Shirt",
+      "colors": [
+        "",
+        "",
+        ""
+      ],
+      "created_at": "",
+      "description": "Áo sơ mi dáng relaxed fit. Cổ ve lật, cộc tay. Có một túi đáp trước ngực. Cài khuy phía trước.",
+      "images": [
+        "https://static.zara.net/assets/public/4b87/b5e2/44dd4b8e9682/eb935e5e2a60/01437404753-e1/01437404753-e1.jpg?ts=1708443248260&w=563",
+        "https://static.zara.net/assets/public/6d9c/6388/180f4b07a7c7/5d4f0d3a7da0/01437404753-e2/01437404753-e2.jpg?ts=1708443245828&w=563"
+      ],
+      "name": "ÁO SƠ MI VẢI JACQUARD SẦN",
+      "price": 1599000,
+      "product_id": "19",
+      "ratings": [
+        5,
+        4
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "updated_at": ""
     }
   ],
   "Reviews": [
     {
-      "review_id": "789",
-      "product_id": "1",
-      "user_id": "123",
-      "rating": 4,
       "comment": "Sản phẩm chất lượng tốt, nhưng vải hơi cứng",
-      "created_at": "2024-04-07T11:00:00Z"
+      "created_at": "2024-04-07T11:00:00Z",
+      "product_id": "1",
+      "rating": 4,
+      "review_id": "789",
+      "user_id": "123"
     }
   ],
-  "Categories": [
-    {
-      "category_id": "shirt",
-      "name": "Shirt",
-      "description": "Danh mục quần áo dành cho nam giới",
-      "img_url":"https://static.zara.net/assets/public/1475/62b8/d96846918ca7/802f7574813b/05679410401-e1/05679410401-e1.jpg?ts=1712218812711&w=563"
-    }, 
-    {
-      "category_id": "tshirt",
-      "name": "T-Shirt",
-      "description": "Danh mục quần áo dành cho nam giới",
-      "img_url":"https://static.zara.net/assets/public/103a/0310/382f465f8a2a/547d4c27561e/01887450832-e1/01887450832-e1.jpg?ts=1704812411391&w=563"
+  "Users": {
+    "YoAJaC9KuKUvsAxfM2bdibxHvXV2": {
+      "address": "",
+      "created_at": 1713979068266,
+      "email": "hieu2003@gmail.com",
+      "phone": "",
+      "updated_at": 1713979068266,
+      "username": "Hiếu"
     },
-    {
-      "category_id": "jeans",
-      "name": "Jeans",
-      "description": "Danh mục quần áo dành cho nam giới",
-      "img_url":"https://static.zara.net/assets/public/465b/e9ad/e13f4cda8b3b/5e4f7db0bb02/08062400407-e1/08062400407-e1.jpg?ts=1708000761751&w=563"
+    "cRSbWBUgBvOcAbdQW0aD0WG9z222": {
+      "address": "",
+      "cart": {
+        "-NwxttJWngDmToP5rVDj": {
+          "image": "https://static.zara.net/assets/public/a56b/b716/46184869aaf8/32d971b6161f/04443154403-e1/04443154403-e1.jpg?ts=1712218824278&w=563",
+          "name": "STRIPED TEXTURED SHIRT",
+          "price": 1299000,
+          "quantity": 2,
+          "size": "M"
+        },
+        "-Nx7toJHShEzRc9ZibfX": {
+          "image": "https://static.zara.net/assets/public/1dad/e9e5/57db4e7a917f/962303a55ef8/06224450633-e1/06224450633-e1.jpg?ts=1712157917574&w=563",
+          "name": "FADED PRINT T-SHIRT",
+          "price": 799000,
+          "quantity": 3,
+          "size": "L"
+        }
+      },
+      "created_at": 1713283615713,
+      "email": "long2003d1@gmail.com",
+      "phone": "",
+      "updated_at": 1713283615713,
+      "username": "Nguyễn Long "
     },
-    {
-      "category_id": "jacket",
-      "name": "Jacket",
-      "description": "Danh mục quần áo dành cho nam giới",
-      "img_url":"https://static.zara.net/assets/public/706f/b3e3/355249e4b179/38ff73ebc7c0/06987351406-e1/06987351406-e1.jpg?ts=1712132749556&w=563"
+    "ufSd6Ckwp3cLo65x4uN5Lbo5Aq83": {
+      "address": "",
+      "cart": {
+        "-Nx3OYhN9B8hkPOBptWM": {
+          "image": "https://static.zara.net/assets/public/59d4/8e79/24034e7295a8/5116498c5204/07545426401-e1/07545426401-e1.jpg?ts=1711984932373&w=563",
+          "name": "ÁO SƠ MI HỌA TIẾT NÉT VẼ",
+          "price": 1299000,
+          "quantity": 3,
+          "size": "L"
+        }
+      },
+      "created_at": 1713343328531,
+      "email": "thu2005d1@gmail.com",
+      "phone": "",
+      "updated_at": 1713343328531,
+      "username": "Thư Nguyễn "
     }
-  ]
+  }
 }

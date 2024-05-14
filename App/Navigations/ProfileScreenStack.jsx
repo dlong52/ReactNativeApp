@@ -5,6 +5,7 @@ import MyOrderScreen from '../screen/MyOrderScreen'
 import PaymentMethodScreen from '../screen/PaymentMethodScreen'
 import SettingScreen from '../screen/SettingScreen'
 import HelpCenterScreen from '../screen/HelpCenterScreen'
+import AddressScreen from '../screen/AddressScreen';
 
 const Stack = createStackNavigator();
 const ProfileScreenStack = () => {
@@ -29,7 +30,12 @@ const ProfileScreenStack = () => {
             />
             <Stack.Screen
                 name="HelpCenter"
-                component={HelpCenterScreen} 
+                component={HelpCenterScreen}
+            />
+
+            <Stack.Screen
+                name="Address"
+                component={AddressScreen}
             />
         </Stack.Navigator>
     )

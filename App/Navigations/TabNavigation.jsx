@@ -1,27 +1,24 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import HomeScreen from '../screen/HomeScreen';
-import ExploreScreen from '../screen/ExploreScreen';
 import NotificationScreen from '../screen/NotificationScreen';
-import ProfileScreen from '../screen/ProfileScreen';
 
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import HomeScreenStackNav from './HomeScreenStackNav';
 import ExploreScreenStackNav from './ExploreScreenStackNav';
-import AuthScreenStack from './AuthScreenStack';
 import ProfileScreenStack from './ProfileScreenStack';
-
-export default function TabNavigation() {
+export default function TabNavigation({ products, categories, cart }) {
     const Tab = createBottomTabNavigator();
     return (
         <Tab.Navigator
-            screenOptions={{ headerShown: false,
-                            tabBarActiveTintColor:"#000" }}
+            screenOptions={{
+                headerShown: false,
+                tabBarActiveTintColor: "#000"
+            }}
         >
             <Tab.Screen
                 name='home'
@@ -34,10 +31,10 @@ export default function TabNavigation() {
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="home" size={24} color={color} />
                     )
-                }} />
+                }}
+            />
             <Tab.Screen
                 name='explore'
-                component={ExploreScreenStackNav}
                 options={{
                     tabBarLabel: ({ color }) => (
                         <Text style={{ color: color, fontSize: 12 }} >Explore</Text>
@@ -45,7 +42,9 @@ export default function TabNavigation() {
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome name="search" size={24} color={color} />
                     )
-                }} />
+                }} >
+                {() => <ExploreScreenStackNav products={products} categories={categories} cart={cart} />}
+            </Tab.Screen>
             <Tab.Screen
                 name='notification'
                 component={NotificationScreen}

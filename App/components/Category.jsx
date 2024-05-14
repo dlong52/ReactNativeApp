@@ -1,9 +1,18 @@
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-const Category = ({ category }) => {
+import helper from '../../helper'
+const Category = () => {
   const navigation = useNavigation()
   const backgroundColors = ['#c9ddf3', '#c5eaea', '#e4e3e3', '#f6e1c2', '#f6e1c2'];
+  const [category, setCategory] = useState([])
+  useEffect(()=>{
+    getCategory();
+  },[])
+  const getCategory = async () =>{
+    const categoryData = await helper.fetchCategoriesData();
+    setCategory(categoryData)
+  }
   return (
     <View className="mt-4">
       {category.map((item, index) => (

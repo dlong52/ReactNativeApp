@@ -9,7 +9,6 @@ WebBrowser.maybeCompleteAuthSession();
 const LoginScreen = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [loading, setLoading] = useState(false)
     const navigation = useNavigation()
 
     const signIn = async () => {
@@ -20,9 +19,7 @@ const LoginScreen = () => {
         } catch (error) {
             console.log(error);
             alert('Check your email and password')
-        } finally {
-            setLoading(false)
-        }
+        } 
     }
     return (
         <View className="bg-gray-900">
@@ -53,6 +50,7 @@ const LoginScreen = () => {
                         <TextInput
                             className="h-[45px] w-full border border-gray-400 rounded-md pl-2 mt-1"
                             placeholder='Password'
+                            secureTextEntry={true}
                             onChangeText={(value) => { setPassword(value) }}
                         />
                     </View>
@@ -65,7 +63,7 @@ const LoginScreen = () => {
                 </TouchableOpacity>
                 <Text className="text-center py-3 font-bold">Or</Text>
                 <TouchableOpacity className=" shadow flex-row w-full h-[45px] bg-white items-center justify-center rounded-md">
-                    <Image className="h-[25px] w-[25px] mx-2" source={require('../../assets/images/googleIcon.png')} />
+                    <Image className="h-[25px] w-[25px] mx-2" source={require('./../../assets/images/googleIcon.png')} />
                     <Text className=" text-gray-600 font-medium">Sign in with Google</Text>
                 </TouchableOpacity>
             </View>

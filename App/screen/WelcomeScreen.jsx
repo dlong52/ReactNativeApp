@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native'
 
 const WelcomeScreen = () => {
     const navigation = useNavigation()
-
     return (
         <View className="flex-1 justify-center items-center p-6 bg-slate-100">
             <Text className="text-[25px] font-bold">Let's Get Started</Text>

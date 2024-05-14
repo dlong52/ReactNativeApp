@@ -18,10 +18,8 @@ export default function ProfileScreen() {
   const signOut = async () => {
     try {
       await auth.signOut();
-      // Đăng xuất thành công, bạn có thể thực hiện các hành động phù hợp ở đây
     } catch (error) {
       console.error('Error signing out:', error.message);
-      // Xử lý lỗi nếu cần thiết
     }
   };
   const handleLogout = () => {
@@ -31,13 +29,13 @@ export default function ProfileScreen() {
       [
         {
           text: "Cancel",
-          style: "cancel" // Nút hủy sẽ ở bên trái
+          style: "cancel" 
         },
         {
           text: "Log Out",
           style: "destructive",
           onPress: () => {
-            signOut(); // Thực hiện log out khi người dùng xác nhận
+            signOut();
           }
         }
       ],

@@ -15,7 +15,6 @@ const SignUpScreen = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [loading, setLoading] = useState(false)
 
   const signUp = async () => {
     setLoading(true)
@@ -50,8 +49,6 @@ const SignUpScreen = () => {
     } catch (error) {
       console.log(error);
       alert('Error creating user')
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -94,15 +91,13 @@ const SignUpScreen = () => {
               className="h-[45px] w-full border border-gray-400 rounded-md pl-2 mt-1"
               type="password"
               placeholder='Password'
+              secureTextEntry={true}
               onChangeText={(value) => { setPassword(value) }}
             />
           </View>
         </View>
         <TouchableOpacity onPress={() => { signUp() }} className="w-full h-[45px] bg-black items-center justify-center rounded-md">
-          <Text
-            className="text-white font-medium"
-
-          >Sign Up</Text>
+          <Text className="text-white font-medium">Sign Up</Text>
         </TouchableOpacity>
         <Text className="text-center py-3 font-bold">Or</Text>
         <TouchableOpacity className=" shadow flex-row w-full h-[45px] bg-white items-center justify-center rounded-md">

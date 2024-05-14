@@ -15,25 +15,33 @@ import helper from '../../helper';
 export default function ExploreScreen() {
   const navigation = useNavigation()
 
-  const [products, setProducts] = useState([])
-  const [category, setCategory] = useState([])
-  const [cartLength, setCartLength] = useState([])
   const [data, setData] = useState([])
-  
+
+  const [products, setProducts] = useState([])
+  const [categories, setCategories] = useState([])
+  const [cart, setCart] = useState([])
+
+  useEffect(() => {
+    getProducts()
+    getCategories()
+    getCart()
+  }, [])
+  const getProducts = async () => {
+    const productsData = await helper.fetchProductsData()
+    setProducts(productsData)
+  }
+  const getCategories = async () => {
+    const categoriesData = await helper.fetchCategoriesData()
+    setCategories(categoriesData)
+  }
+  const getCart = async () => {
+    const cartData = await helper.fetchCartData()
+    setCart(cartData)
+  }
+
   const [isSearch, setIsSearch] = useState(false)
   const searchInput = useRef(null)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const productsData = await helper.fetchProductsData()
-      const categoryData = await helper.fetchCategoriesData()
-      const cartData = await helper.fetchCartData()
-      setProducts(productsData)
-      setCategory(categoryData)
-      setCartLength(cartData.length)
-    }
-    fetchData()
-  }, [])
   const handelSearch = (value) => {
     const filteredProducts = helper.handelSearch(value, products)
     setData(filteredProducts);
@@ -48,15 +56,13 @@ export default function ExploreScreen() {
         <Text className="text-[22px] font-semibold">FASHION</Text>
         <TouchableOpacity
           className="w-fit absolute right-0"
-          onPress={() => {
-            navigation.navigate('cart', { cart: "Cart" })
-          }}
+          onPress={() => { navigation.navigate('cart', { cart: "Cart" }) }}
         >
           <View className="">
             <Ionicons name="bag-handle-outline" size={28} color="black" />
           </View>
           <View className="absolute w-[17px] h-[17px] bg-red-500 rounded-full right-[-6px] top-[-5px] flex-1 items-center">
-            <Text className="text-white text-[12px] items-center">{cartLength}</Text>
+            <Text className="text-white text-[12px] items-center">{cart ? cart.length : 0}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -76,7 +82,7 @@ export default function ExploreScreen() {
         <TouchableOpacity onPress={() => { setData(products) }} className="px-4 py-2 bg-gray-800 rounded-2xl ">
           <Text className="text-white font-medium">All</Text>
         </TouchableOpacity>
-        {category.map((category, index) => (
+        {categories.map((category, index) => (
           <TouchableOpacity key={index} className="px-4 py-2">
             <Text className="text-black font-medium">{category.name}</Text>
           </TouchableOpacity>

@@ -34,7 +34,8 @@ const helper = {
         try {
             const snapshot = await get(child(dbRef, `Products`));
             if (snapshot.exists()) {
-                return snapshot.val();
+                const dataArray = Object.keys(snapshot.val()).map((key) => ({ id: key, ...snapshot.val()[key] }));
+                return dataArray;
             } else {
                 console.log("No data available");
                 return null;
@@ -59,19 +60,78 @@ const helper = {
     fetchCartData: async () => {
         const userRef = ref(db, `Users/${auth.currentUser.uid}`);
         try {
-            const snapshot = await get(userRef); // Lấy dữ liệu từ userRef
+            const snapshot = await get(userRef);
             if (snapshot.exists()) {
-                const userData = snapshot.val(); // Dữ liệu người dùng, bao gồm cả trường "cart"
+                const userData = snapshot.val();
                 const userCart = userData.cart;
-                const dataArray = Object.keys(userCart).map((key) => ({ id: key, ...userCart[key] })); // Lấy trường dữ liệu "cart" từ dữ liệu người dùng
-                return dataArray
+                const dataArray = Object.keys(userCart).map((key) => ({ id: key, ...userCart[key] }));
+                if (dataArray)
+                    return dataArray
+                else
+                    return [];
             } else {
                 console.log("Dữ liệu không tồn tại");
             }
         } catch (error) {
-            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ liệu:", error);
+            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
         }
-    }
+    },
+    getAddress: async () => {
+        const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+        try {
+            const snapshot = await get(userRef);
+            if (snapshot.exists()) {
+                const userData = snapshot.val();
+                const userAddress = userData.address;
+                if (userAddress)
+                    return userAddress
+                else
+                    return [];
+            } else {
+                console.log("Dữ liệu không tồn tại");
+            }
+        } catch (error) {
+            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
+        }
+    },
+    getPhone: async () => {
+        const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+        try {
+            const snapshot = await get(userRef);
+            if (snapshot.exists()) {
+                const userData = snapshot.val();
+                const userPhone = userData.phoneNumber;
+                if (userPhone)
+                    return userPhone
+                else
+                    return [];
+            } else {
+                console.log("Dữ liệu không tồn tại");
+            }
+        } catch (error) {
+            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
+        }
+    },
+    fetchProvincesData: async () => {
+        const provinces = "https://vapi.vnappmob.com/api/province/";
+        const response = await fetch(provinces);
+        const provincesData = await response.json();
+        return provincesData.results;
+    },
+    fetchDistrictData: async (id) => {
+        const district = `https://vapi.vnappmob.com/api/province/district/${id}`;
+        const response = await fetch(district);
+        const districtData = await response.json();
+        return districtData.results;
+    },
+    fetchWardData: async (id) => {
+        const ward = `https://vapi.vnappmob.com/api/province/ward/${id}`;
+        const response = await fetch(ward);
+        const wardData = await response.json();
+        return wardData.results;
+    },
+
+
 
 
 }
