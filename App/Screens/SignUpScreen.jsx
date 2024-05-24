@@ -1,56 +1,76 @@
 import { View, Text, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import React, { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
-
+import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-
 import { auth } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 
-
 const SignUpScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const validateEmail = (email) => {
+    // Regular expression to validate email format
+    const regex = /^[a-zA-Z0-9._-]+@gmail\.com$/;
+    return regex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 8;
+  };
 
   const signUp = async () => {
-    setLoading(true)
     try {
+      if (!name || !email || !password) {
+        setError("Please fill in all fields.");
+        return;
+      }
+      if (!validateEmail(email)) {
+        setError("Please enter a valid Gmail address.");
+        return;
+      }
+      if (!validatePassword(password)) {
+        setError("Password must be at least 8 characters long.");
+        return;
+      }
       const database = getDatabase();
-      const respone = await createUserWithEmailAndPassword(auth, email, password)
-      const usersRef = ref(database, 'Users/' + respone.user.uid);
-      if (respone) {
-        await updateProfile(respone.user, {
+      const response = await createUserWithEmailAndPassword(auth, email, password);
+      const usersRef = ref(database, 'Users/' + response.user.uid);
+      if (response) {
+        await updateProfile(response.user, {
           displayName: name,
         });
       }
       const userData = {
-        username: respone.user.providerData[0].displayName,
-        email: respone.user.email,
-        phone: "",
+        username: response.user.providerData[0].displayName,
+        email: response.user.email,
+        phoneNumber: "",
         address: "",
         cart: [],
         orders: [],
         created_at: Date.now(),
         updated_at: Date.now()
       };
-
       set(usersRef, userData)
         .then(() => {
-          console.log("Thông tin người dùng đã được lưu vào cơ sở dữ liệu.");
+          console.log("User information saved to the database.");
         })
         .catch((error) => {
-          console.error("Lỗi khi lưu thông tin người dùng: ", error);
+          console.error("Error saving user information: ", error);
         });
-      alert("Sign Up Success")
+      alert("Sign Up Success");
+      navigation.navigate('Login')
+
     } catch (error) {
       console.log(error);
-      alert('Error creating user')
+      alert('Error creating user');
     }
-  }
+  };
 
   return (
     <ScrollView className="bg-gray-900">
@@ -61,7 +81,7 @@ const SignUpScreen = () => {
           </TouchableOpacity>
         </View>
         <View className="flex-row justify-center">
-          <Image source={require('./../../assets/images/loginImg.png')}
+          <Image source={require('./../../public/images/loginImg.png')}
             className="w-[180px] h-[150px]" />
         </View>
       </View>
@@ -71,7 +91,6 @@ const SignUpScreen = () => {
             <Text className="text-gray-600 font-medium">Full Name</Text>
             <TextInput
               className="h-[45px] w-full border border-gray-400 rounded-md pl-2 mt-1"
-              type="email"
               placeholder='Full Name'
               onChangeText={(value) => { setName(value) }}
             />
@@ -80,7 +99,6 @@ const SignUpScreen = () => {
             <Text className="text-gray-600 font-medium">Email Address</Text>
             <TextInput
               className="h-[45px] w-full border border-gray-400 rounded-md pl-2 mt-1"
-              type="email"
               placeholder='Email address'
               onChangeText={(value) => { setEmail(value) }}
             />
@@ -89,24 +107,25 @@ const SignUpScreen = () => {
             <Text className="text-gray-600 font-medium">Password</Text>
             <TextInput
               className="h-[45px] w-full border border-gray-400 rounded-md pl-2 mt-1"
-              type="password"
               placeholder='Password'
               secureTextEntry={true}
               onChangeText={(value) => { setPassword(value) }}
             />
           </View>
+          {error && <Text style={{ color: 'red' }}>{error}</Text>}
         </View>
         <TouchableOpacity onPress={() => { signUp() }} className="w-full h-[45px] bg-black items-center justify-center rounded-md">
           <Text className="text-white font-medium">Sign Up</Text>
         </TouchableOpacity>
-        <Text className="text-center py-3 font-bold">Or</Text>
-        <TouchableOpacity className=" shadow flex-row w-full h-[45px] bg-white items-center justify-center rounded-md">
-          <Image className="h-[25px] w-[25px] mx-2" source={require('../../assets/images/googleIcon.png')} />
-          <Text className=" text-gray-600 font-medium">Sign in with Google</Text>
-        </TouchableOpacity>
+        <View className="flex-row justify-center mt-4">
+          <Text className="text-[15px]">Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text className="text-orange-600 text-[15px] ml-1">Log In</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default SignUpScreen
+export default SignUpScreen;

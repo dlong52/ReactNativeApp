@@ -14,7 +14,7 @@ const ChecoutItem = (props) => {
                         <Text className="my-3">Classify: Size {data.size ? data.size : ""}</Text>
                     </View>
                     <View className="flex-row justify-between">
-                        <Text className="font-bold text-[15px]">{helper.convertToFormattedString(data.price)} VND</Text>
+                        <Text className="font-bold text-[15px]">${helper.convertToFormattedString(data.price)}.00</Text>
                         <Text className="">X{data.quantity}</Text>
                     </View>
                 </View>

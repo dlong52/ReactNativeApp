@@ -4,15 +4,18 @@ import { useNavigation } from '@react-navigation/native'
 import helper from '../../helper'
 const Category = () => {
   const navigation = useNavigation()
-  const backgroundColors = ['#c9ddf3', '#c5eaea', '#e4e3e3', '#f6e1c2', '#f6e1c2'];
   const [category, setCategory] = useState([])
-  useEffect(()=>{
+
+  useEffect(() => {
     getCategory();
-  },[])
-  const getCategory = async () =>{
+  }, [])
+
+  const getCategory = async () => {
     const categoryData = await helper.fetchCategoriesData();
     setCategory(categoryData)
   }
+
+  const backgroundColors = ['#c9ddf3', '#c5eaea', '#e4e3e3', '#f6e1c2', '#f6e1c2'];
   return (
     <View className="mt-4">
       {category.map((item, index) => (

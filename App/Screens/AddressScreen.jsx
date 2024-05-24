@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import helper from '../../helper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import { getDatabase, ref, update } from 'firebase/database';
 import { app, auth } from '../../firebaseConfig';
+import { useNavigation } from '@react-navigation/native';
+
+import helper from '../../helper';
+
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const AddressScreen = () => {
+    const navigation = useNavigation();
+
     const [selectedProvince, setSelectedProvince] = useState(null);
     const [selectedDistrict, setSelectedDistrict] = useState(null);
-    const [selectedWard, setSelectedWard] = useState(null); // Thêm state cho ward
+    const [selectedWard, setSelectedWard] = useState(null);
     const [detailAddress, setDetailAddress] = useState(null);
 
     const [provinces, setProvinces] = useState([]);
     const [districts, setDistricts] = useState([]);
     const [wards, setWards] = useState([]);
 
-    const [provinceFocus, setProvinceFocus] = useState(false); // Thêm biến state để theo dõi focus
-    const [districtFocus, setDistrictFocus] = useState(false); // Thêm biến state để theo dõi focus
-    const [wardFocus, setWardFocus] = useState(false); // Thêm biến state để theo dõi focus
+    const [provinceFocus, setProvinceFocus] = useState(false);
+    const [districtFocus, setDistrictFocus] = useState(false);
+    const [wardFocus, setWardFocus] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,7 +37,6 @@ const AddressScreen = () => {
         };
         fetchData();
     }, []);
-
     useEffect(() => {
         const fetchDistricts = async () => {
             if (selectedProvince) {
@@ -46,7 +50,6 @@ const AddressScreen = () => {
         };
         fetchDistricts();
     }, [selectedProvince]);
-
     useEffect(() => {
         const fetchWards = async () => {
             if (selectedDistrict) {
@@ -80,10 +83,11 @@ const AddressScreen = () => {
             }
             update(userRef, { address: address })
                 .then(() => {
-                    console.log("Phone number updated successfully");
+                    navigation.navigate('Setting')
+                    console.log("Address updated successfully");
                 })
                 .catch((error) => {
-                    console.error("Failed to update phone number:", error);
+                    console.error("Failed to update address:", error);
                 });
         } else {
             alert('Please select')
@@ -119,7 +123,7 @@ const AddressScreen = () => {
                         />
                     )}
                 />
-            </View>
+            </View>  
             <View className="bg-white p-[16px]">
                 {renderLabel('District', districtFocus)}
                 <Dropdown

@@ -5,10 +5,9 @@ import helper from '../../../helper';
 import { app, auth } from '../../../firebaseConfig';
 import { child, getDatabase, ref, remove, update } from 'firebase/database';
 
-const db = getDatabase(app);
-const userCartRef = ref(db, `Users/${auth.currentUser.uid}/cart`);
 
 const CartItem = (props) => {
+    const db = getDatabase(app);
     const data = props.data
     const [quantity, setQuantity] = useState(data.quantity)
 
@@ -26,6 +25,7 @@ const CartItem = (props) => {
     }
 
     const updateQuantityInDatabase = (newQuantity, id) => {
+        const userCartRef = ref(db, `Users/${auth.currentUser.uid}/cart`);
         const itemRef = child(userCartRef, id);
         update(itemRef, { quantity: newQuantity })
             .then(() => {
@@ -36,6 +36,7 @@ const CartItem = (props) => {
             });
     };
     const deleteItemCart = (id) => {
+        const userCartRef = ref(db, `Users/${auth.currentUser.uid}/cart`);
         const itemRef = child(userCartRef, id);
         remove(itemRef)
             .then(() => {
@@ -59,7 +60,7 @@ const CartItem = (props) => {
                     </TouchableOpacity>
                 </View>
                 <View className="flex-row justify-between">
-                    <Text className="font-bold text-[15px] my-2">{helper.convertToFormattedString(data.price)} VND</Text>
+                    <Text className="font-bold text-[15px] my-2">${helper.convertToFormattedString(data.price)}.00</Text>
                     <View className=" w-[80px] flex-row justify-around items-center border-gray-500 border rounded-full">
                         <TouchableOpacity onPress={() => { minusQuantity(data.id) }}>
                             <Feather name="minus" size={18} color="black" />

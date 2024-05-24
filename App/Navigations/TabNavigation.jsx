@@ -1,9 +1,8 @@
 import { View, Text } from 'react-native'
-import React, { useContext } from 'react'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import NotificationScreen from '../screen/NotificationScreen';
+import NotificationScreen from '../Screens/NotificationScreen';
 
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';

@@ -1,21 +1,22 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react'
-import ProfileScreen from '../screen/ProfileScreen'
-import MyOrderScreen from '../screen/MyOrderScreen'
-import PaymentMethodScreen from '../screen/PaymentMethodScreen'
-import SettingScreen from '../screen/SettingScreen'
-import HelpCenterScreen from '../screen/HelpCenterScreen'
-import AddressScreen from '../screen/AddressScreen';
+import React, { useEffect } from 'react'
+import ProfileScreen from '../Screens/ProfileScreen'
+import MyOrderScreen from '../Screens/MyOrderScreen'
+import PaymentMethodScreen from '../Screens/PaymentMethodScreen'
+import SettingScreen from '../Screens/SettingScreen'
+import HelpCenterScreen from '../Screens/HelpCenterScreen'
+import AddressScreen from '../Screens/AddressScreen';
 
 const Stack = createStackNavigator();
 const ProfileScreenStack = () => {
+    
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Profile" component={ProfileScreen} options={
-                {
-                    headerShown: false,
-                }
-            } />
+            <Stack.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name="MyOrder"
                 component={MyOrderScreen}
@@ -26,13 +27,12 @@ const ProfileScreenStack = () => {
             />
             <Stack.Screen
                 name="Setting"
-                component={SettingScreen}
+                component={() => <SettingScreen />}
             />
             <Stack.Screen
                 name="HelpCenter"
                 component={HelpCenterScreen}
             />
-
             <Stack.Screen
                 name="Address"
                 component={AddressScreen}
@@ -40,5 +40,4 @@ const ProfileScreenStack = () => {
         </Stack.Navigator>
     )
 }
-
 export default ProfileScreenStack

@@ -7,19 +7,23 @@ import { auth } from '../../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 WebBrowser.maybeCompleteAuthSession();
 const LoginScreen = () => {
+    const navigation = useNavigation()
+    
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const navigation = useNavigation()
+    const [error, setError] = useState(null)
 
     const signIn = async () => {
-        setLoading(true)
         try {
-            const respone = await signInWithEmailAndPassword(auth, email, password)
-            alert("Login successful")
+            if (!email || !password) {
+                setError("Email and password are required.")
+                return;
+            }
+            const response = await signInWithEmailAndPassword(auth, email, password)
         } catch (error) {
             console.log(error);
-            alert('Check your email and password')
-        } 
+            setError('Check your email and password')
+        }
     }
     return (
         <View className="bg-gray-900">
@@ -30,11 +34,10 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
                 <View className="flex-row justify-center">
-                    <Image source={require('./../../assets/images/loginImg.png')}
+                    <Image source={require('./../../public/images/loginImg.png')}
                         className="w-[200px] h-[150px]" />
                 </View>
             </View>
-
             <View className="w-full h-full bg-white p-6 rounded-t-[50]">
                 <View className="mb-6 mt-3">
                     <View className="my-2">
@@ -54,18 +57,20 @@ const LoginScreen = () => {
                             onChangeText={(value) => { setPassword(value) }}
                         />
                     </View>
+                    {error && <Text style={{ color: 'red' }}>{error}</Text>}
                 </View>
                 <TouchableOpacity
                     className="w-full h-[45px] bg-black items-center justify-center rounded-md"
-                    onPress={signIn}
+                    onPress={()=>{signIn()}}
                 >
                     <Text className="text-white font-medium">Login</Text>
                 </TouchableOpacity>
-                <Text className="text-center py-3 font-bold">Or</Text>
-                <TouchableOpacity className=" shadow flex-row w-full h-[45px] bg-white items-center justify-center rounded-md">
-                    <Image className="h-[25px] w-[25px] mx-2" source={require('./../../assets/images/googleIcon.png')} />
-                    <Text className=" text-gray-600 font-medium">Sign in with Google</Text>
-                </TouchableOpacity>
+                <View className="flex-row justify-center mt-4">
+                    <Text className="text-[15px]">New to Draco?</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                        <Text className="text-orange-600 text-[15px] ml-1">Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

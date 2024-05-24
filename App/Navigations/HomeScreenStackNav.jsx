@@ -1,11 +1,14 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 
-import CartScreen from '../screen/CartScreen';
-import ItemList from '../screen/ItemList';
-import HomeScreen from '../screen/HomeScreen';
-import Detail from '../screen/Detail';
-import CheckoutScreen from '../screen/CheckoutScreen';
+import CartScreen from '../Screens/CartScreen';
+import ItemList from '../Screens/ItemList';
+import HomeScreen from '../Screens/HomeScreen';
+import Detail from '../Screens/Detail';
+import CheckoutScreen from '../Screens/CheckoutScreen';
+import AddressScreen from '../Screens/AddressScreen';
+import SettingScreen from '../Screens/SettingScreen';
+import NotiOrderSuccessScreen from '../Screens/NotiOrderSuccessScreen';
 
 const Stack = createStackNavigator();
 const HomeScreenStackNav = () => {
@@ -14,8 +17,8 @@ const HomeScreenStackNav = () => {
       <Stack.Screen
         name="Home"
         options={{ headerShown: false, }}
-        component={HomeScreen}
-      />
+        component={() => <HomeScreen/>}
+      ></Stack.Screen>
       <Stack.Screen
         name="item-list"
         component={ItemList}
@@ -39,7 +42,25 @@ const HomeScreenStackNav = () => {
       />
       <Stack.Screen
         name="checkout"
-        component={CheckoutScreen}
+        component={() => <CheckoutScreen/>}
+        options={
+          ({ route }) => ({
+            title: "Checkout",
+            headerBackTitleStyle: { textTransform: 'capitalize' },
+          })}
+      />
+      <Stack.Screen
+        name="Setting"
+        component={() => <SettingScreen/>}
+      />
+      <Stack.Screen
+        name="Address"
+        component={AddressScreen}
+      />
+      <Stack.Screen
+        name="NotiOrder"
+        options={{ headerShown: false, }}
+        component={NotiOrderSuccessScreen}
       />
     </Stack.Navigator>
   )

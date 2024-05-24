@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-nativ
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome6 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
@@ -15,12 +14,15 @@ import helper from '../../helper';
 export default function ExploreScreen() {
   const navigation = useNavigation()
 
+  const [isSort, setIsSort] = useState(false)
+
   const [data, setData] = useState([])
 
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
   const [cart, setCart] = useState([])
 
+  const [selectedCategory, setSelectedCategory] = useState('All')
   useEffect(() => {
     getProducts()
     getCategories()
@@ -32,13 +34,12 @@ export default function ExploreScreen() {
   }
   const getCategories = async () => {
     const categoriesData = await helper.fetchCategoriesData()
-    setCategories(categoriesData)
-  }
+    setCategories(categoriesData) 
+  }     
   const getCart = async () => {
     const cartData = await helper.fetchCartData()
     setCart(cartData)
   }
-
   const [isSearch, setIsSearch] = useState(false)
   const searchInput = useRef(null)
 
@@ -47,7 +48,34 @@ export default function ExploreScreen() {
     setData(filteredProducts);
     setIsSearch(true);
   }
+  const handleSort = () => {
+    const sortedProducts = [...products];
+    sortedProducts.sort((a, b) => {
+      if (a.price > b.price)
+        return 1;
+      if (a.price < b.price)
+        return -1;
+      return 0;
+    });
 
+    if (isSort) 
+      sortedProducts.reverse();
+
+    setData(sortedProducts);
+    setProducts(sortedProducts)
+    setIsSort(!isSort);
+  }
+  const handelAll = (value) => {
+    setSelectedCategory(value)
+    setIsSearch(false)
+    getProducts() 
+  }
+  const handelTab = (category) => {
+    setSelectedCategory(category)
+    const filteredProducts = helper.handelSearch(category, products)
+    setData(filteredProducts);
+    setIsSearch(true);   
+  }
   if (!products || !Object.keys(products).length)
     return <LoadingScreen />;
   return (
@@ -70,21 +98,27 @@ export default function ExploreScreen() {
         <View className="flex-1 gap-x-3 rounded-md bg-slate-200 flex-row items-center justify-between">
           <Ionicons name="search" size={24} color="gray" />
           <TextInput ref={searchInput} onChange={(event) => handelSearch(event.nativeEvent.text)} className="flex-1 rounded-md h-full" placeholder='Search products' type="text" />
-          {isSearch ? <TouchableOpacity onPress={() => { setData(products); searchInput.current.clear(), setIsSearch(false) }} className="mr-1">
-            <FontAwesome6 name="xmark" size={24} color="gray" />
-          </TouchableOpacity> : ""}
         </View>
-        <TouchableOpacity className="w-[45px] h-[45px] bg-black items-center justify-center rounded-md">
+        {isSort ? <TouchableOpacity onPress={() => { handleSort() }} className="w-[45px] h-[45px] bg-black items-center justify-center rounded-md">
           <MaterialCommunityIcons name="sort-ascending" size={24} color="white" />
-        </TouchableOpacity>
+        </TouchableOpacity> :
+          <TouchableOpacity onPress={() => { handleSort() }} className="w-[45px] h-[45px] bg-black items-center justify-center rounded-md">
+            <MaterialCommunityIcons name="sort-descending" size={24} color="white" />
+          </TouchableOpacity>}
       </View>
       <View className="flex-row gap-x-2 mb-4">
-        <TouchableOpacity onPress={() => { setData(products) }} className="px-4 py-2 bg-gray-800 rounded-2xl ">
-          <Text className="text-white font-medium">All</Text>
+        <TouchableOpacity onPress={() => { handelAll("All") }} className={selectedCategory == 'All' ? "px-4 py-2 bg-gray-800 rounded-2xl " : "px-4 py-2"}>
+          <Text className={selectedCategory == 'All' ? "text-white font-medium" : "text-black font-medium"}>All</Text>
         </TouchableOpacity>
         {categories.map((category, index) => (
-          <TouchableOpacity key={index} className="px-4 py-2">
-            <Text className="text-black font-medium">{category.name}</Text>
+          <TouchableOpacity
+            key={index}
+            className={selectedCategory == category.name ? "px-4 py-2 bg-gray-800 rounded-2xl " : "px-4 py-2"}
+            onPress={() => {
+              handelTab(category.name)
+            }}
+          >
+            <Text className={selectedCategory == category.name ? "text-white font-medium" : "text-black font-medium"}>{category.name}</Text>
           </TouchableOpacity>
         ))}
       </View>

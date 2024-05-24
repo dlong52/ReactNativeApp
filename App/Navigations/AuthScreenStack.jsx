@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import LoginScreen from '../screen/LoginScreen';
-import SignUpScreen from '../screen/SignUpScreen';
-import WelcomeScreen from '../screen/WelcomeScreen';
+import LoginScreen from '../Screens/LoginScreen';
+import SignUpScreen from '../Screens/SignUpScreen';
+import WelcomeScreen from '../Screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthScreenStack = () => {

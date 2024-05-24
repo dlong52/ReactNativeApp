@@ -2,20 +2,10 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../../firebaseConfig';
-import { useEffect, useState } from 'react';
-import helper from '../../helper';
 
-const Header = () => {
+const Header = ({cart}) => {
     const navigation = useNavigation()
     const currenUser = auth.currentUser
-    const [cart, setCart] = useState([])
-    useEffect(()=>{
-        getCart();
-    },[])
-    const getCart = async () => {
-        const cartData = await helper.fetchCartData();
-        setCart(cartData);
-    }
     return (
         <View className="flex-row justify-between items-center">
             <View className="flex flex-row items-center gap-3">
@@ -37,7 +27,7 @@ const Header = () => {
                     <Text className="text-white text-[12px] items-center">{cart? cart.length: 0}</Text>
                 </View>
             </TouchableOpacity>  
-        </View>
+        </View> 
     )  
 }
 

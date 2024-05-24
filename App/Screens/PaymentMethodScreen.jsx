@@ -8,5 +8,4 @@ const PaymentMethodScreen = () => {
     </View>
   )
 }
-
 export default PaymentMethodScreen

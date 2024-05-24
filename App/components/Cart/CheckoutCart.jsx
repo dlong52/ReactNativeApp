@@ -14,11 +14,11 @@ const CheckoutCart = ({ data }) => {
             <View className="p-6">
                 <View className="flex-row justify-between my-1">
                     <Text className="text-[14] font-medium text-gray-500">Total Items ({data.length})</Text>
-                    <Text className="text-[14] font-semibold">{helper.convertToFormattedString(totalPayment)} VND</Text>
-                </View>
+                    <Text className="text-[14] font-semibold">${helper.convertToFormattedString(totalPayment)}.00</Text>
+                </View>  
                 <View className="flex-row justify-between my-1">
                     <Text className="text-[14] font-medium text-gray-500">Total Payment</Text>
-                    <Text className="text-[14] font-semibold">{helper.convertToFormattedString(totalPayment)} VND</Text>
+                    <Text className="text-[14] font-semibold">${helper.convertToFormattedString(totalPayment)}.00</Text>
                 </View>
             </View>
             <TouchableOpacity

@@ -27,7 +27,6 @@ const CartScreen = () => {
         )
     }
     return (
-        
         <View className="flex-1 bg-white">
             <ScrollView className=" bg-transparent p-6">
                 {cartList.map((item, index) => {

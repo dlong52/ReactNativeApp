@@ -1,12 +1,9 @@
-import { getDatabase, ref, child, get } from "firebase/database";
+import { getDatabase, ref, child, get, push, set } from "firebase/database";
 import { app, auth } from "./firebaseConfig";
 const dbRef = ref(getDatabase());
 const db = getDatabase(app);
 
 const helper = {
-    removeDuplicates: (arr) => {
-        return arr = [...new Set(arr)];
-    },
     extractFieldValues: (arr, fieldName) => {
         return arr.map(item => {
             return item[fieldName];
@@ -17,6 +14,9 @@ const helper = {
         const limit = 10;
         let shortText = str.split(" ").slice(0, limit).join(" ");
         return shortText + "...";
+    },
+    handelFilter: (category, products) => {
+
     },
     handelSearch: (value, products) => {
         const searchValue = value.toLowerCase().replace(/\s/g, '');
@@ -58,58 +58,86 @@ const helper = {
         }
     },
     fetchCartData: async () => {
-        const userRef = ref(db, `Users/${auth.currentUser.uid}`);
-        try {
-            const snapshot = await get(userRef);
-            if (snapshot.exists()) {
-                const userData = snapshot.val();
-                const userCart = userData.cart;
-                const dataArray = Object.keys(userCart).map((key) => ({ id: key, ...userCart[key] }));
-                if (dataArray)
-                    return dataArray
-                else
-                    return [];
-            } else {
-                console.log("Dữ liệu không tồn tại");
+        if (auth.currentUser) {
+            const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+            try {
+                const snapshot = await get(userRef);
+                if (snapshot.exists() && snapshot.val().cart) {
+                    const userData = snapshot.val();
+                    const userCart = userData.cart;
+                    const dataArray = Object.keys(userCart).map((key) => ({ id: key, ...userCart[key] }));
+                    if (dataArray)
+                        return dataArray
+                    else
+                        return [];
+                } else {
+                    console.log("Dữ liệu không tồn tại");
+                }
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
             }
-        } catch (error) {
-            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
         }
     },
     getAddress: async () => {
-        const userRef = ref(db, `Users/${auth.currentUser.uid}`);
-        try {
-            const snapshot = await get(userRef);
-            if (snapshot.exists()) {
-                const userData = snapshot.val();
-                const userAddress = userData.address;
-                if (userAddress)
-                    return userAddress
-                else
-                    return [];
-            } else {
-                console.log("Dữ liệu không tồn tại");
+        if (auth.currentUser) {
+            const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+            try {
+                const snapshot = await get(userRef);
+                if (snapshot.exists()) {
+                    const userData = snapshot.val();
+                    const userAddress = userData.address;
+                    if (userAddress)
+                        return userAddress
+                    else
+                        return false;
+                } else {
+                    console.log("Dữ liệu không tồn tại");
+                }
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
             }
-        } catch (error) {
-            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
         }
     },
     getPhone: async () => {
-        const userRef = ref(db, `Users/${auth.currentUser.uid}`);
-        try {
-            const snapshot = await get(userRef);
-            if (snapshot.exists()) {
-                const userData = snapshot.val();
-                const userPhone = userData.phoneNumber;
-                if (userPhone)
-                    return userPhone
-                else
-                    return [];
-            } else {
-                console.log("Dữ liệu không tồn tại");
+        if (auth.currentUser) {
+            const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+            try {
+                const snapshot = await get(userRef);
+                if (snapshot.exists()) {
+                    const userData = snapshot.val();
+                    const userPhone = userData.phoneNumber;
+                    if (userPhone)
+                        return userPhone
+                    else
+                        return false;
+                } else {
+                    console.log("Dữ liệu không tồn tại");
+                }
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
             }
+        }
+    },
+    createOrder: (order) => {
+        const orderRef = ref(db, `Orders`);
+        push(orderRef, order)
+            .then(() => {
+                console.log('Product added to Products collection successfully');
+            })
+            .catch((error) => {
+                console.error('Error adding product to Products collection:', error);
+            });
+    },
+    createOrderToUser: (order) => {
+        
+    },
+    clearCart: async () => {
+        const userRef = ref(db, `Users/${auth.currentUser.uid}/cart`);
+        try {
+            await set(userRef, null);
+            console.log("Cart cleared successfully.");
         } catch (error) {
-            console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
+            console.error("Error clearing cart: ", error);
         }
     },
     fetchProvincesData: async () => {

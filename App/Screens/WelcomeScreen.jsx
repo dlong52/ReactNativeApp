@@ -7,7 +7,7 @@ const WelcomeScreen = () => {
     return (
         <View className="flex-1 justify-center items-center p-6 bg-slate-100">
             <Text className="text-[25px] font-bold">Let's Get Started</Text>
-            <Image source={require('./../../assets/images/loginScImg.png')}
+            <Image source={require('./../../public/images/loginScImg.png')}
                 className="w-[250px] h-[250px] " />
             <View className="w-full">
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')} className="w-full h-[45px] bg-black items-center justify-center rounded-md">
