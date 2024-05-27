@@ -48,12 +48,12 @@ const CartItem = (props) => {
     };
     return (
         <View className="flex-row bg-gray-300 my-2 rounded-xl shadow-xl">
-            <Image className="h-[110px] w-[110px] rounded-lg m-2" source={{ uri: data.image ? data.image : "" }} />
+            <Image className="h-[90px] w-[90px] rounded-lg m-2" source={{ uri: data.image ? data.image : "" }} />
             <View className="m-2 flex-1">
                 <View className="flex-1 flex-row justify-between w-">
                     <View className="w-3/4">
                         <Text className="text-[12px] font-semibold">{data.name ? data.name : ""}</Text>
-                        <Text className="mt-2">Size {data.size ? data.size : ""}</Text>
+                        <Text className="mt-2">Classify: Size {data.size ? data.size : ""}</Text>
                     </View>
                     <TouchableOpacity onPress={() => { deleteItemCart(data.id) }}>
                         <Feather name="delete" size={24} color="#c44d4d" />

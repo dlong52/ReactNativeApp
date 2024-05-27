@@ -1,18 +1,16 @@
-import { View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ScrollView, RefreshControl } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { useNavigation } from '@react-navigation/native';
-
 import Product from '../components/Product';
 import InvalidResult from '../components/InvalidResult';
 import LoadingScreen from './LoadingScreen';
 import helper from '../../helper';
+import CartIcon from '../components/CartIcon';
 
 export default function ExploreScreen() {
-  const navigation = useNavigation()
 
   const [isSort, setIsSort] = useState(false)
 
@@ -22,22 +20,20 @@ export default function ExploreScreen() {
   const [categories, setCategories] = useState([])
   const [cart, setCart] = useState([])
 
+  const [refreshing, setRefreshing] = useState(false);
+
   const [selectedCategory, setSelectedCategory] = useState('All')
   useEffect(() => {
-    getProducts()
-    getCategories()
-    getCart()
+    getData()
   }, [])
-  const getProducts = async () => {
-    const productsData = await helper.fetchProductsData()
+  const getData = async () => {
+    const [productsData, categoriesData, cartData] = await Promise.all([
+      helper.fetchProductsData(),
+      helper.fetchCategoriesData(),
+      helper.fetchCartData()
+    ]);
     setProducts(productsData)
-  }
-  const getCategories = async () => {
-    const categoriesData = await helper.fetchCategoriesData()
-    setCategories(categoriesData) 
-  }     
-  const getCart = async () => {
-    const cartData = await helper.fetchCartData()
+    setCategories(categoriesData)
     setCart(cartData)
   }
   const [isSearch, setIsSearch] = useState(false)
@@ -49,7 +45,7 @@ export default function ExploreScreen() {
     setIsSearch(true);
   }
   const handleSort = () => {
-    const sortedProducts = [...products];
+    const sortedProducts = [...data];
     sortedProducts.sort((a, b) => {
       if (a.price > b.price)
         return 1;
@@ -57,42 +53,41 @@ export default function ExploreScreen() {
         return -1;
       return 0;
     });
-
-    if (isSort) 
+    if (isSort)
       sortedProducts.reverse();
-
     setData(sortedProducts);
-    setProducts(sortedProducts)
     setIsSort(!isSort);
   }
   const handelAll = (value) => {
     setSelectedCategory(value)
-    setIsSearch(false)
-    getProducts() 
+    setIsSearch(true)
+    setData(products);
   }
   const handelTab = (category) => {
     setSelectedCategory(category)
-    const filteredProducts = helper.handelSearch(category, products)
+    const filteredProducts = helper.handelFilter(category, products)
     setData(filteredProducts);
-    setIsSearch(true);   
+    setIsSearch(true);
   }
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await getData();
+    setRefreshing(false);
+  };
   if (!products || !Object.keys(products).length)
     return <LoadingScreen />;
   return (
-    <ScrollView className="py-8 px-[25] bg-white">
+    <ScrollView
+      className="py-8 px-[25] bg-white"
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+        />
+      }>
       <View className="flex-row items-center justify-center">
         <Text className="text-[22px] font-semibold">FASHION</Text>
-        <TouchableOpacity
-          className="w-fit absolute right-0"
-          onPress={() => { navigation.navigate('cart', { cart: "Cart" }) }}
-        >
-          <View className="">
-            <Ionicons name="bag-handle-outline" size={28} color="black" />
-          </View>
-          <View className="absolute w-[17px] h-[17px] bg-red-500 rounded-full right-[-6px] top-[-5px] flex-1 items-center">
-            <Text className="text-white text-[12px] items-center">{cart ? cart.length : 0}</Text>
-          </View>
-        </TouchableOpacity>
+        <CartIcon cart={cart} />
       </View>
       <View className=" flex-row gap-2 justify-between my-6">
         <View className="flex-1 gap-x-3 rounded-md bg-slate-200 flex-row items-center justify-between">
@@ -106,7 +101,7 @@ export default function ExploreScreen() {
             <MaterialCommunityIcons name="sort-descending" size={24} color="white" />
           </TouchableOpacity>}
       </View>
-      <View className="flex-row gap-x-2 mb-4">
+      <View className="flex-row gap-x-1 mb-4">
         <TouchableOpacity onPress={() => { handelAll("All") }} className={selectedCategory == 'All' ? "px-4 py-2 bg-gray-800 rounded-2xl " : "px-4 py-2"}>
           <Text className={selectedCategory == 'All' ? "text-white font-medium" : "text-black font-medium"}>All</Text>
         </TouchableOpacity>
@@ -122,7 +117,10 @@ export default function ExploreScreen() {
           </TouchableOpacity>
         ))}
       </View>
-      {isSearch && data.length == 0 ? <InvalidResult /> : <Product data={isSearch ? data : products} />}
+      {isSearch && data.length == 0 ?
+        <InvalidResult /> :
+        <Product data={isSearch ? data : products} />
+      }
     </ScrollView>
   )
 }

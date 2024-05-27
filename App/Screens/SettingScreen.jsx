@@ -26,7 +26,7 @@ const SettingScreen = () => {
   };
 
   const validatePhoneNumber = (phoneNumber) => {
-    const regex = /^0[0-9]{9}$/; // Regular expression for Vietnamese phone numbers
+    const regex = /^0[0-9]{9}$/;
     return regex.test(phoneNumber);
   };
 
@@ -83,9 +83,9 @@ const SettingScreen = () => {
               placeholder='0987654321'
               onChangeText={(value) => { setPhoneNumberInput(value); setPhoneNumberError(null); }}
             />
-            <TouchableOpacity 
+            <TouchableOpacity
               className="p-2"
-              onPress={() => { setShowPhoneInput(!showPhoneInput) }} 
+              onPress={() => { setShowPhoneInput(!showPhoneInput) }}
             >
               <Text className=" text-gray-500">Cancel</Text>
             </TouchableOpacity>
@@ -99,8 +99,8 @@ const SettingScreen = () => {
           </TouchableOpacity>
         </View>}
       </View>
-    </View>  
-  ); 
+    </View>
+  );
 };
 
 export default SettingScreen;

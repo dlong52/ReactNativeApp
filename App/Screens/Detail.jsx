@@ -84,7 +84,6 @@ const Detail = () => {
       };
 
       await push(userRef, productToAdd);
-      console.log('Product added to cart successfully');
       setSelectedSize(null);
       setIsSucceededAddCart(true);
       setTimeout(() => {
@@ -114,11 +113,9 @@ const Detail = () => {
       {!isSelectedSize && (
         <Warning content="Please select size" />
       )}
-      {
-        isSucceededAddCart && (
-          <Success content="Added products and shopping cart" />
-        )
-      }
+      {isSucceededAddCart && (
+        <Success content="Added products and shopping cart" />
+      )}
       <View className="relative">
         <FlatList
           data={data.images}
@@ -174,5 +171,4 @@ const Detail = () => {
     </View>
   );
 };
-
 export default Detail;

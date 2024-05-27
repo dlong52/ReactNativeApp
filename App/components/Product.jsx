@@ -20,8 +20,8 @@ const Product = ({ data }) => {
                             }}
                         >
                             <Image className="h-[180px]" source={{ uri: item.images[0] }} />
-                            <Text className="h-[65px] mt-2 text-[12px] text-gray-700 font-medium leading-4" >{item.name}</Text>
-                            <Text className=" p-2 absolute bottom-1 text-[15px] text-gray-800 font-semibold mt-2">${helper.convertToFormattedString(item.price)}.00</Text> 
+                            <Text className="h-[60px] mt-2 text-[12px] text-gray-700 font-semibold leading-4" >{item.name}</Text>
+                            <Text className=" p-2 absolute bottom-1 text-[16px] text-gray-800 font-semibold mt-2">${helper.convertToFormattedString(item.price)}.00</Text> 
                         </TouchableOpacity>
                     </View>
                 ))}

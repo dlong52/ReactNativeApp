@@ -4,30 +4,37 @@ const dbRef = ref(getDatabase());
 const db = getDatabase(app);
 
 const helper = {
-    extractFieldValues: (arr, fieldName) => {
-        return arr.map(item => {
-            return item[fieldName];
-        });
-    },
     convertToFormattedString: (num) => new Intl.NumberFormat().format(num),
-    truncateText: (str) => {
-        const limit = 10;
-        let shortText = str.split(" ").slice(0, limit).join(" ");
-        return shortText + "...";
+    getCurrentTime: () => {
+        const currentTime = new Date();
+        const options = {
+            timeZone: 'Asia/Ho_Chi_Minh',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
+        };
+        const formatter = new Intl.DateTimeFormat('vi-VN', options);
+        const vietnamTime = formatter.format(currentTime);
+        return vietnamTime;
     },
-    handelFilter: (category, products) => {
-
-    },
+    
     handelSearch: (value, products) => {
         const searchValue = value.toLowerCase().replace(/\s/g, '');
         const filteredProducts = products.filter(product => {
-            // Loại bỏ tất cả các khoảng trắng khỏi tên sản phẩm và danh mục sản phẩm
             const productName = product.name.toLowerCase().replace(/\s/g, '');
             const productCategory = product.category.toLowerCase().replace(/\s/g, '');
-            // So sánh tên sản phẩm hoặc danh mục sản phẩm với giá trị tìm kiếm
             return productName.includes(searchValue) || productCategory.includes(searchValue);
         });
-        // Cập nhật state products với các sản phẩm đã lọc
+        return filteredProducts
+    },
+    handelFilter: (value, products) => {
+        const searchValue = value.toLowerCase().replace(/\s/g, '');
+        const filteredProducts = products.filter(product => {
+            const productCategory = product.category.toLowerCase().replace(/\s/g, '');
+            return productCategory === searchValue;
+        });
         return filteredProducts
     },
     fetchProductsData: async () => {
@@ -70,6 +77,26 @@ const helper = {
                         return dataArray
                     else
                         return [];
+                } else {
+                    console.log("Giỏ hàng trống");
+                }
+            } catch (error) {
+                console.error("Lỗi khi lấy dữ liệu từ cơ sở dữ");
+            }
+        }
+    },
+    fetchOrderData: async (status) => {
+        if (auth.currentUser) {
+            const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+            try {
+                const snapshot = await get(userRef);
+                if (snapshot.exists() && snapshot.val().orders) {
+                    const userData = snapshot.val();
+                    const userOrder = userData.orders;  
+                    const dataArray = Object.keys(userOrder).map((key) => ({ id: key, ...userOrder[key] }));
+                    const order = dataArray.filter(item => item.status === status);
+                    
+                    return order;
                 } else {
                     console.log("Dữ liệu không tồn tại");
                 }
@@ -128,8 +155,13 @@ const helper = {
                 console.error('Error adding product to Products collection:', error);
             });
     },
-    createOrderToUser: (order) => {
-        
+    createOrderToUser: async (order) => {
+        try {
+            const userRef = ref(db, `Users/${auth.currentUser.uid}/orders`);
+            await push(userRef, order);
+        } catch (error) {
+            console.error('Error adding product to order:', error);
+        }
     },
     clearCart: async () => {
         const userRef = ref(db, `Users/${auth.currentUser.uid}/cart`);

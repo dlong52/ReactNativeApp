@@ -9,6 +9,7 @@ import CheckoutScreen from '../Screens/CheckoutScreen';
 import AddressScreen from '../Screens/AddressScreen';
 import SettingScreen from '../Screens/SettingScreen';
 import NotiOrderSuccessScreen from '../Screens/NotiOrderSuccessScreen';
+import MyOrderScreen from '../Screens/MyOrderScreen';
 
 const Stack = createStackNavigator();
 const HomeScreenStackNav = () => {
@@ -17,8 +18,8 @@ const HomeScreenStackNav = () => {
       <Stack.Screen
         name="Home"
         options={{ headerShown: false, }}
-        component={() => <HomeScreen/>}
-      ></Stack.Screen>
+        component={() => <HomeScreen />}
+      />
       <Stack.Screen
         name="item-list"
         component={ItemList}
@@ -42,7 +43,7 @@ const HomeScreenStackNav = () => {
       />
       <Stack.Screen
         name="checkout"
-        component={() => <CheckoutScreen/>}
+        component={() => <CheckoutScreen />}
         options={
           ({ route }) => ({
             title: "Checkout",
@@ -51,7 +52,7 @@ const HomeScreenStackNav = () => {
       />
       <Stack.Screen
         name="Setting"
-        component={() => <SettingScreen/>}
+        component={() => <SettingScreen />}
       />
       <Stack.Screen
         name="Address"
@@ -61,6 +62,10 @@ const HomeScreenStackNav = () => {
         name="NotiOrder"
         options={{ headerShown: false, }}
         component={NotiOrderSuccessScreen}
+      />
+      <Stack.Screen
+        name="MyOrder"
+        component={MyOrderScreen}
       />
     </Stack.Navigator>
   )

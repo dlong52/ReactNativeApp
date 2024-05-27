@@ -7,6 +7,8 @@ import CheckoutScreen from '../Screens/CheckoutScreen';
 import AddressScreen from '../Screens/AddressScreen';
 import SettingScreen from '../Screens/SettingScreen';
 import NotiOrderSuccessScreen from '../Screens/NotiOrderSuccessScreen';
+import MyOrderScreen from '../Screens/MyOrderScreen';
+import CartIcon from '../components/CartIcon';
 
 const Stack = createStackNavigator();
 const ExploreScreenStackNav = () => {
@@ -15,28 +17,31 @@ const ExploreScreenStackNav = () => {
       <Stack.Screen
         name="Explore"
         options={{ headerShown: false, }}
-        component={() => <ExploreScreen/>}
-      >
-      </Stack.Screen>
+        component={() => <ExploreScreen />}
+      />
       <Stack.Screen
         name="cart"
-        component={CartScreen} 
+        component={CartScreen}
         options={
           ({ route }) => ({ title: route.params.cart, headerBackTitleStyle: { textTransform: 'capitalize' } })}
       />
-
       <Stack.Screen
-        name="detail"
-        component={Detail}
+        name="checkout"
+        component={() => <CheckoutScreen />}
         options={
-          ({ route }) => ({ 
-            title: "Detail",
+          ({ route }) => ({
+            title: "Checkout",
             headerBackTitleStyle: { textTransform: 'capitalize' },
           })}
       />
       <Stack.Screen
-        name="Checkout"
-        component={() => <CheckoutScreen/>}
+        name="detail"
+        component={Detail}
+        options={
+          ({ route }) => ({
+            title: "Detail",
+            headerBackTitleStyle: { textTransform: 'capitalize' },
+          })}
       />
       <Stack.Screen
         name="Address"
@@ -44,12 +49,16 @@ const ExploreScreenStackNav = () => {
       />
       <Stack.Screen
         name="Setting"
-        component={() => <SettingScreen/>}
+        component={() => <SettingScreen />}
       />
       <Stack.Screen
         name="NotiOrder"
         options={{ headerShown: false, }}
         component={NotiOrderSuccessScreen}
+      />
+      <Stack.Screen
+        name="MyOrder"
+        component={MyOrderScreen}
       />
     </Stack.Navigator>
   )

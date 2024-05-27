@@ -25,7 +25,7 @@ const AddressScreen = () => {
     const [provinceFocus, setProvinceFocus] = useState(false);
     const [districtFocus, setDistrictFocus] = useState(false);
     const [wardFocus, setWardFocus] = useState(false);
-
+  
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -139,7 +139,7 @@ const AddressScreen = () => {
                     onBlur={() => setDistrictFocus(false)}
                     onChange={(item) => {
                         setSelectedDistrict(item);
-                        setSelectedWard(null); // Reset ward on district change
+                        setSelectedWard(null); 
                         setDistrictFocus(false);
                     }}
                     renderLeftIcon={() => (

@@ -22,7 +22,7 @@ export default function App() {
       setUser(user);  
     });     
   }, [user]);
-  return (
+  return ( 
     <UserContext.Provider value={user}>
       <View className="flex-1 bg-white">
         <StatusBar backgroundColor="white" />

@@ -1,10 +1,8 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'
+import { View, Text } from 'react-native'
 import { auth } from '../../firebaseConfig';
+import CartIcon from './CartIcon';
 
 const Header = ({cart}) => {
-    const navigation = useNavigation()
     const currenUser = auth.currentUser
     return (
         <View className="flex-row justify-between items-center">
@@ -17,18 +15,8 @@ const Header = ({cart}) => {
                     <Text className="text-[18px] font-bold">{currenUser?.displayName}</Text>
                 </View>
             </View>
-            <TouchableOpacity
-                onPress={() => { 
-                    navigation.navigate('cart', { cart: "Cart" })
-                }}
-            >
-                <Ionicons name="bag-handle-outline" size={28} color="black" />
-                <View className="absolute w-[17px] h-[17px] bg-red-500 rounded-full right-[-6px] top-[-5px] flex-1 items-center">
-                    <Text className="text-white text-[12px] items-center">{cart? cart.length: 0}</Text>
-                </View>
-            </TouchableOpacity>  
+            <CartIcon cart={cart} />
         </View> 
     )  
 }
-
 export default Header

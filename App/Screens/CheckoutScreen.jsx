@@ -14,9 +14,10 @@ const CheckoutScreen = () => {
     const userId = auth.currentUser.uid
 
     const [cartList, setCartList] = useState([])
-    const [totalPayment, setTotalPayment] = useState(0)
+    const [totalPayment, setTotalPayment] = useState(null)
     const [address, setAddress] = useState(null)
     const [phoneNumber, setPhoneNumber] = useState(null)
+    const [currentTime, setCurrentTime] = useState(null)
 
     const [paypalUrl, setPaypalUrl] = useState(null)
     const [accessToken, setAccessToken] = useState(null)
@@ -28,31 +29,19 @@ const CheckoutScreen = () => {
         setTotalPayment(cartList?.reduce((totalPayment, item) => totalPayment + item.price * item.quantity, 0))
     }, [cartList])
     useEffect(() => {
-        getCartList()
-        getCheckoutInfoData()
+        helper.fetchCartData().then(setCartList);
+        fetchCheckoutInfo();
+        setCurrentTime(helper.getCurrentTime());
     }, [])
-
-    const getCheckoutInfoData = async () => {
-        const addressData = await helper.getAddress()
-        const phoneNumberData = await helper.getPhone()
-        setAddress(addressData)
-        setPhoneNumber(phoneNumberData)
-    }
-    const getCartList = async () => {
-        const cartData = await helper.fetchCartData()
-        setCartList(cartData)
-    }
-
-
-    const order = {
-        user_id: userId,
-        payment_method: "Paypal payment",
-        products: cartList,
-        shipping_address: address,
-        phoneNumber: phoneNumber,
-        status: "Processing",
-        totalPayment: totalPayment
-    }
+    const fetchCheckoutInfo = async () => {
+        const [addressData, phoneNumberData] = await Promise.all([
+            helper.getAddress(),
+            helper.getPhone()
+        ]);
+        setAddress(addressData);
+        setPhoneNumber(phoneNumberData);
+    };
+    console.log(totalPayment); 
     const onPressPaypal = async () => {
         if (!address || !phoneNumber) {
             console.log("Please enter");
@@ -96,7 +85,7 @@ const CheckoutScreen = () => {
                             }
                         }
                     ],
-                    "application_context": {
+                    "application_context": {  
                         "return_url": "https://example.com/return",
                         "cancel_url": "https://example.com/cancel"
                     }
@@ -114,28 +103,32 @@ const CheckoutScreen = () => {
             }
         }
     };
-
     const onUrlChange = (webviewState) => {
-        //console.log("webviewStatewebviewState", webviewState)
         if (webviewState.url.includes('https://example.com/cancel')) {
             clearPaypalState()
             return;
         }
         if (webviewState.url.includes('https://example.com/return')) {
             const urlValues = queryString.parseUrl(webviewState.url)
-            //console.log("my urls value", urlValues)
             const { token } = urlValues.query
             if (!!token) {
                 paymentSucess(token)
             }
-
         }
     }
-    const paymentSucess = async (id) => {
+    const paymentSucess = async (id) => {  
         try {
+            const order = {
+                payment_method: "Paypal payment",
+                products: cartList,
+                shipping_address: address,
+                phoneNumber: phoneNumber,
+                status: "Processing",
+                date: currentTime
+            }
             const res = paypayApi.capturePayment(id, accessToken)
-            helper.createOrder(order)
-            helper.clearCart()
+            helper.createOrderToUser(order)
+            helper.clearCart()   
             clearPaypalState()
             navigation.navigate("NotiOrder")
         } catch (error) {
@@ -222,7 +215,6 @@ const CheckoutScreen = () => {
                         source={{ uri: paypalUrl }}
                         onNavigationStateChange={onUrlChange}
                     />
-
                 </View>
             </Modal>
         </View>

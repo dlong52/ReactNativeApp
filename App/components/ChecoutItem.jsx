@@ -2,12 +2,11 @@ import { View, Text, Image } from 'react-native'
 import React from 'react'
 import helper from '../../helper'
 
-const ChecoutItem = (props) => {
-    const data = props.data
+const ChecoutItem = ({data}) => {
     return (
         <View className="flex-row bg-gray-300 my-2 rounded-xl shadow-xl">
             <Image className="h-[80px] w-[80px] rounded-lg m-2" source={{ uri: data.image ? data.image : "" }} />
-            <View className="m-2 flex-1">
+            <View className="m-2 flex-1">  
                 <View className="flex-1">
                     <View className="">
                         <Text className="text-[13px] font-semibold">{data.name ? data.name : ""}</Text>
