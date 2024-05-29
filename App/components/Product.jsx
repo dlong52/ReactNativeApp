@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import helper from '../../helper';
+import helper from '../helper';
 import { useNavigation } from '@react-navigation/native'
 import LoadingScreen from '../Screens/LoadingScreen';
 

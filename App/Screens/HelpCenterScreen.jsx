@@ -5,7 +5,7 @@ const HelpCenterScreen = () => {
   return (
     <View className="flex items-center justify-center h-full w-full">
       <Text>HelpCenterScreen</Text>
-    </View>
+    </View>  
   )
 }
 

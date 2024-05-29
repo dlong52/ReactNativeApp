@@ -1,6 +1,6 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
-import helper from '../../helper'
+import helper from '../helper'
 
 const ChecoutItem = ({data}) => {
     return (

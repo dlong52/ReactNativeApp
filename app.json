@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "my-app",
-    "scheme": "my-app",  
+    "scheme": "my-app",
     "slug": "my-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,19 +16,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.long1810.myapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.long1810.myapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d6357fa9-12c5-4616-80b2-0fe4ffe1eb0e"
+      }
+    }
   }
 }

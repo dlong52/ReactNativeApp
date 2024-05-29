@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import helper from '../../helper'
+import helper from '../helper'
 const Category = () => {
   const navigation = useNavigation()
   const [category, setCategory] = useState([])

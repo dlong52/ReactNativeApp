@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import helper from '../../../helper'
+import helper from '../../helper'
 import { useNavigation } from '@react-navigation/native'
 
 const CheckoutCart = ({ data }) => {

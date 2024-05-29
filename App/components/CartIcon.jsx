@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import helper from '../../helper';
+import helper from '../helper';
 const CartIcon = ({cart}) => {
     const navigation = useNavigation()
     return ( 

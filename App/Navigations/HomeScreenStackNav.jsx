@@ -22,7 +22,7 @@ const HomeScreenStackNav = () => {
       />
       <Stack.Screen
         name="item-list"
-        component={ItemList}
+        component={ItemList}  
         options={
           ({ route }) => ({ title: route.params.category, headerBackTitleStyle: { textTransform: 'capitalize' } })}
       />

@@ -3,7 +3,7 @@ import { RefreshControl, ScrollView } from 'react-native';
 import Header from '../components/Header';
 import Category from '../components/Category';
 import LoadingScreen from './LoadingScreen';
-import helper from '../../helper';
+import helper from '../helper';
 
 export default function HomeScreen() {
     const [cart, setCart] = useState([]);

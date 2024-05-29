@@ -1,7 +1,7 @@
 import { View, Text, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { auth } from '../../firebaseConfig'
-import helper from '../../helper';
+import helper from '../helper';
 
 import CartItem from '../components/Cart/CartItem';
 import CheckoutCart from '../components/Cart/CheckoutCart';

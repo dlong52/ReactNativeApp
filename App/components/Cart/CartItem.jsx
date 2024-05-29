@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons';
-import helper from '../../../helper';
+import helper from '../../helper';
 import { app, auth } from '../../../firebaseConfig';
 import { child, getDatabase, ref, remove, update } from 'firebase/database';
 
@@ -31,7 +31,7 @@ const CartItem = (props) => {
             .then(() => {
                 props.updateCartUi()
             })
-            .catch((error) => {
+            .catch((error) => {    
                 console.error("Error updating quantity: ", error);
             });
     };
@@ -41,6 +41,7 @@ const CartItem = (props) => {
         remove(itemRef)
             .then(() => {
                 props.updateCartUi()
+                console.log("Successfully deleted");
             })
             .catch((error) => {
                 console.error("Error removing item: ", error);

@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Product from '../components/Product';
 import InvalidResult from '../components/InvalidResult';
 import LoadingScreen from './LoadingScreen';
-import helper from '../../helper';
+import helper from '../helper';
 import CartIcon from '../components/CartIcon';
 
 export default function ExploreScreen() {

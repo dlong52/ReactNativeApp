@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { getDatabase, ref, query, orderByChild, equalTo, onValue, child, push, get } from 'firebase/database';
 import { app, auth } from '../../firebaseConfig';
-import helper from '../../helper';
+import helper from '../helper';
 import LoadingScreen from './LoadingScreen';
 
 import Warning from '../components/Warning';
@@ -157,13 +157,14 @@ const Detail = () => {
         <View className="my-6">
           <Text className="text-gray-600">{data.description}</Text>
         </View>
-        {data.sizes && <View className="flex-row">
-          {data.sizes.map((size, index) => (
-            <TouchableOpacity key={index} onPress={() => { handleSizeSelection(size) }} className={size == selectedSize ? `bg-black ${styleSizeButton}` : styleSizeButton}>
-              <Text className={size == selectedSize ? 'text-white' : 'text-black'}>{size}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>}
+        {data.sizes &&
+          <View className="flex-row">
+            {data.sizes.map((size, index) => (
+              <TouchableOpacity key={index} onPress={() => { handleSizeSelection(size) }} className={size == selectedSize ? `bg-black ${styleSizeButton}` : styleSizeButton}>
+                <Text className={size == selectedSize ? 'text-white' : 'text-black'}>{size}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>}
         <TouchableOpacity onPress={addToCart} className={styleAddToCartButton}>
           <Text className="text-white">Add to Cart</Text>
         </TouchableOpacity>

@@ -6,7 +6,7 @@ import { getDatabase, ref, update } from 'firebase/database';
 import { app, auth } from '../../firebaseConfig';
 import { useNavigation } from '@react-navigation/native';
 
-import helper from '../../helper';
+import helper from '../helper';
 
 import AntDesign from '@expo/vector-icons/AntDesign';
 

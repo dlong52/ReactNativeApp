@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { auth } from '../../firebaseConfig';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
+import helper from '../helper';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -53,12 +54,11 @@ const SignUpScreen = () => {
         address: "",
         cart: [],
         orders: [],
-        created_at: Date.now(),
-        updated_at: Date.now()
-      };
+        created_at: helper.getCurrentTime(),
+      };   
       set(usersRef, userData)
         .then(() => {
-          console.log("User information saved to the database.");
+          console.log("User information saved to the database.");  
         })
         .catch((error) => {
           console.error("Error saving user information: ", error);

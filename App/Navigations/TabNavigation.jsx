@@ -66,6 +66,6 @@ export default function TabNavigation({ products, categories, cart }) {
                         <FontAwesome name="user-circle" size={24} color={color} />
                     )
                 }} />
-        </Tab.Navigator>
+        </Tab.Navigator>    
     )
 }
