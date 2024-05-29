@@ -19,7 +19,7 @@ const helper = {
         const vietnamTime = formatter.format(currentTime);
         return vietnamTime;
     },
-    
+
     handelSearch: (value, products) => {
         const searchValue = value.toLowerCase().replace(/\s/g, '');
         const filteredProducts = products.filter(product => {
@@ -92,10 +92,10 @@ const helper = {
                 const snapshot = await get(userRef);
                 if (snapshot.exists() && snapshot.val().orders) {
                     const userData = snapshot.val();
-                    const userOrder = userData.orders;  
+                    const userOrder = userData.orders;
                     const dataArray = Object.keys(userOrder).map((key) => ({ id: key, ...userOrder[key] }));
                     const order = dataArray.filter(item => item.status === status);
-                    
+
                     return order;
                 } else {
                     console.log("Dữ liệu không tồn tại");
@@ -155,6 +155,32 @@ const helper = {
                 console.error('Error adding product to Products collection:', error);
             });
     },
+    cancelOrder: async (orderId,updateUi) => {
+        if (auth.currentUser) {
+            const userRef = ref(db, `Users/${auth.currentUser.uid}`);
+            try {
+                const snapshot = await get(userRef);
+                if (snapshot.exists() && snapshot.val().orders && snapshot.val().orders[orderId]) {
+                    const orderToCancel = snapshot.val().orders[orderId];
+
+                    // Xóa đơn hàng từ field orders
+                    await set(child(userRef, `orders/${orderId}`), null);
+
+                    // Di chuyển đơn hàng sang field orderCancelled
+                    const orderCancelledRef = ref(db, `Users/${auth.currentUser.uid}/orderCancelled`);
+                    await push(orderCancelledRef, orderToCancel);
+
+                    console.log("Đơn hàng đã được hủy thành công.");
+                    updateUi()
+                } else {
+                    console.log("Đơn hàng không tồn tại hoặc không thể hủy.");
+                }
+            } catch (error) {
+                console.error("Lỗi khi hủy đơn hàng:", error);
+            }
+        }
+    }
+    ,
     createOrderToUser: async (order) => {
         try {
             const userRef = ref(db, `Users/${auth.currentUser.uid}/orders`);

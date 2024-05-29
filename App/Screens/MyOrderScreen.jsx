@@ -15,14 +15,14 @@ const MyOrderScreen = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const getOrder = async () => {
-      const myOrderData = await helper.fetchOrderData("Processing")
-      const deliveredOrderData = await helper.fetchOrderData("Delivered")
-      setMyOrder(myOrderData)
-      setDeliveredOrder(deliveredOrderData)
-    }
     getOrder()
   }, [])
+  const getOrder = async () => {
+    const myOrderData = await helper.fetchOrderData("Processing")
+    const deliveredOrderData = await helper.fetchOrderData("Delivered")
+    setMyOrder(myOrderData)
+    setDeliveredOrder(deliveredOrderData)
+  }
   useEffect(() => {
     if (selectedTab) {
       if (myOrder)
@@ -32,7 +32,10 @@ const MyOrderScreen = () => {
         setData(deliveredOrder)
     }
   }, [selectedTab, myOrder, deliveredOrder]);
-  
+  const updateUi = () => {
+    getOrder();
+    console.log("jhjhkj");
+  }
   return (
     <View className="p-5">
       <View className="flex-row justify-between ">
@@ -51,7 +54,7 @@ const MyOrderScreen = () => {
       </View>
       {(data.length > 0 ) ? <ScrollView className="h-full">
         {data.reverse().map((item, index) => {
-          return <OrderItem data={item} key={index} />
+          return <OrderItem updateUi={updateUi} data={item} key={index} />
         })}
       </ScrollView> :
         <View className=" mt-[150px] flex-col items-center">
