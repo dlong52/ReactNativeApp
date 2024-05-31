@@ -14,22 +14,22 @@ import { auth } from './firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 
 const UserContext = createContext(null);
-export default function App() {     
+export default function App() {
   const [user, setUser] = useState(null);
-  
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {  
-      setUser(user);  
-    });     
+      setUser(user);
+    });
   }, [user]);
-  return ( 
+  return (
     <UserContext.Provider value={user}>
+      <StatusBar style="auto" backgroundColor="white" />
       <View className="flex-1 bg-white">
-        <StatusBar backgroundColor="white" />
         <NavigationContainer>
           {user ? <TabNavigation /> : <AuthScreenStack />}
         </NavigationContainer>
-      </View>       
-    </UserContext.Provider>        
-  );  
+      </View>
+    </UserContext.Provider>
+  );
 }    

@@ -81,10 +81,10 @@ export default function ExploreScreen() {
       className="py-8 px-[25] bg-white"
       refreshControl={
         <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
         />
-      }>
+    }>    
       <View className="flex-row items-center justify-center">
         <Text className="text-[22px] font-semibold">FASHION</Text>
         <CartIcon cart={cart} />

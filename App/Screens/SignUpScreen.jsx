@@ -73,20 +73,19 @@ const SignUpScreen = () => {
   };
 
   return (
-    <ScrollView className="bg-gray-900">
-      <View className=" bg-gray-900 p-6">
+    <ScrollView className="bg-black">
+      <View className="bg-black p-6">
         <View className="flex-row justify-start">
           <TouchableOpacity className="flex items-center justify-center w-[40px] h-[30px] rounded-tr-xl rounded-bl-xl bg-white mt-2" onPress={() => { navigation.goBack() }} >
             <Ionicons name="arrow-back-sharp" size={24} color="black" />
           </TouchableOpacity>
         </View>
-        <View className="flex-row justify-center">
-          <Image source={require('./../../public/images/loginImg.png')}
-            className="w-[180px] h-[150px]" />
+        <View className="flex-row justify-center items-center h-[80px]">
+          <Text className="text-[25px] text-white font-semibold">Sign Up</Text>
         </View>
       </View>
-      <View className="w-full h-full bg-white p-6 rounded-t-[50]">
-        <View className="mb-6 mt-1">
+      <View className="w-full h-full bg-white p-6 rounded-tl-[80]">
+        <View className="mb-6 mt-4">
           <View className="my-2">
             <Text className="text-gray-600 font-medium">Full Name</Text>
             <TextInput
@@ -118,9 +117,9 @@ const SignUpScreen = () => {
           <Text className="text-white font-medium">Sign Up</Text>
         </TouchableOpacity>
         <View className="flex-row justify-center mt-4">
-          <Text className="text-[15px]">Already have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text className="text-orange-600 text-[15px] ml-1">Log In</Text>
+          <Text className="text-[15px] text-gray-500">Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>  
+            <Text className="text-[15px] ml-1">Log In</Text>
           </TouchableOpacity>
         </View>
       </View>
